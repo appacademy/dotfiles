@@ -22,7 +22,6 @@ alias l='ls'
 # I never remember to prefer pry
 alias irb='pry'
 
-source $CONF_DIR/git/git-aliases.bash
 source .dotfiles/git-completion.bash
 
 PATH=$PATH:$HOME/.rvm/bin
