@@ -12,10 +12,10 @@ export PROMPT_COMMAND="history -a"
 export MPORTS_DIR=/opt/local/bin:/opt/local/sbin
 # prefer macports stuff
 PATH=$MPORTS_DIR:$PATH
-export EMACS='/opt/local/bin/emacs'
+#export EMACS='/opt/local/bin/emacs'
 export LS='/opt/local/bin/gls'
 
-alias e=$EMACS
+alias e=emacs
 alias ls='$LS --color=auto'
 alias l='ls'
 
