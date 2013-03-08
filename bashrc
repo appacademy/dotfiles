@@ -1,6 +1,6 @@
 PROMPT_COLOR='\e[00m\e[38;05;166m'
 export PS1='\['$PROMPT_COLOR'\]\w\$\[\e[0m\] '
-export EDITOR=$EMACS
+export EDITOR=emacs
 
 MILLION=1000000
 export HISTFILESIZE=$MILLION
