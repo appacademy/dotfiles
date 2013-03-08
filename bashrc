@@ -28,4 +28,5 @@ PATH=$PATH:$HOME/.rvm/bin
 source ~/.rvm/scripts/rvm
 source $rvm_path/scripts/completion
 
+PATH="/usr/local/mysql/bin:$PATH"
 PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
