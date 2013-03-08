@@ -23,7 +23,7 @@ alias l='ls'
 alias irb='pry'
 
 source $CONF_DIR/git/git-aliases.bash
-source $CONF_DIR/git/git-completion.bash
+source .dotfiles/git-completion.bash
 
 PATH=$PATH:$HOME/.rvm/bin
 source ~/.rvm/scripts/rvm
