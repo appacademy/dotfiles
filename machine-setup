@@ -1,0 +1,48 @@
+* password: go_student_go
+* chrome (set so that old tabs open)
+* scroll direction
+* xcode 4.6
+    * command line utils
+    * port install apple-gcc42
+* icons in finder; dock items
+    * also set default to open home folder
+* increase key speed
+* meta key in terminal (color, terminal size)
+* macports
+* Download appacademy dotfiles
+* Used rvm install --with-gcc=gcc-4.2
+    * addressable
+    * better_errors, binding_of_caller, meta_request
+    * capybara
+    * composite_primary_keys
+    * debugger
+    * devise
+    * factory_girl
+    * foreman
+    * guard
+    * heroku
+    * kaminari
+    * launchy
+    * letter_opener
+    * nokogiri
+    * oauth, oauth2, omniauth
+    * pg
+    * pry
+    * rails
+    * rest-client
+    * rspec
+    * thin
+* nodejs
+* npm
+* postgres.app
+* mysql
+* imagemagick
+* textmate2
+    * installed rails, ruby scss bundles; themes
+    * set 2 spaces instead of tabs
+    * strip whitespace on save
+* http://superuser.com/questions/192518/image-copy-mac-drive-how-to-do-this
+    * Works for *firewire*, not *ethernet* you dope.
+
+# Didn't do
+* DYLD_LIBRARY_PATH for active record and postgres?
