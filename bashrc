@@ -1,5 +1,5 @@
 PROMPT_COLOR='\e[00m\e[38;05;166m'
-export PS1='\['$PROMPT_COLOR'\]\w\$\[\e[0m\] '
+export PS1='\['$PROMPT_COLOR'\][\h]: \w\$\[\e[0m\] '
 export EDITOR=emacs
 
 MILLION=1000000
