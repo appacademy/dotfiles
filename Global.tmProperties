@@ -1,0 +1,15 @@
+# Version 1.0 -- Generated content!
+# this goes in ~/Library/Application\ Support/TextMate/Global.tmProperties
+
+encoding         = UTF-8
+
+fontSize = 24
+
+# don't use real tabstops
+softTabs         = true
+tabSize          = 2
+
+# don't write long lines
+showWrapColumn   = true
+wrapColumn       = 80
+softWrap         = false
