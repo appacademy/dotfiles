@@ -41,9 +41,10 @@
     * installed rails, ruby scss bundles; themes; sources bundle
     * set 2 spaces instead of tabs
     * strip whitespace on save
-* Hipchat
 * http://superuser.com/questions/192518/image-copy-mac-drive-how-to-do-this
     * Works for *firewire*, not *ethernet* you dope.
 
 # Didn't do
 * DYLD_LIBRARY_PATH for active record and postgres?
+* Hipchat (native, not AIR)
+* SSH keys
