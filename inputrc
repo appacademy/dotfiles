@@ -1,2 +1,2 @@
-"[A": history-search-backward
-"[B": history-search-forward
+"\e[A": history-search-backward
+"\e[B": history-search-forward
