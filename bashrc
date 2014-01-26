@@ -1,4 +1,4 @@
-PROMPT_COLOR='\e[00m\e[38;05;166m'
+PROMPT_COLOR='\e[00m\e[31;01;166m'
 export PS1='\['$PROMPT_COLOR'\][\h]: \w\$\[\e[0m\] '
 export EDITOR="mate -w"
 
