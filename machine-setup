@@ -42,9 +42,12 @@
     * strip whitespace on save
     * https://github.com/bomberstudios/Strip-Whitespace-On-Save.tmbundle
 * http://superuser.com/questions/192518/image-copy-mac-drive-how-to-do-this
-    * Works for *firewire*, not *ethernet* you dope.
-    * Hold "T" for firewired computer
+    * Works for *firewire* or *lightning*, not *ethernet* you dope.
+    * Hold "T" for clonee computer
     * Hold "CMD-R" for cloner
+    * Go in to disk utility on the cloner
+    * Using the utility, delete all partitions on clonee, and create new partitions.
+    * Use the disk copy utility to copy over both partitions, one at a time.
 * Hipchat (native, not AIR)
 * sources bundle
 
