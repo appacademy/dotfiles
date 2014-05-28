@@ -7,3 +7,4 @@ ln -s ~/.dotfiles/pryrc ~/.pryrc
 ln -s ~/.dotfiles/rdebugrc ~/.rdebugrc
 ln -s ~/.dotfiles/gemrc ~/.gemrc
 ln -s ~/.dotfiles/jshintrc ~/.jshintrc
+ln -s ~/.dotfiles/rubocop.yml ~/.rubocop.yml
