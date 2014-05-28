@@ -5,3 +5,4 @@ ln -s ~/.dotfiles/inputrc ~/.inputrc
 ln -s ~/.dotfiles/profile ~/.profile
 ln -s ~/.dotfiles/pryrc ~/.pryrc
 ln -s ~/.dotfiles/rdebugrc ~/.rdebugrc
+ln -s ~/.dotfiles/gemrc ~/.gemrc
