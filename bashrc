@@ -20,7 +20,7 @@ alias l='ls'
 # I never remember to prefer pry
 alias irb='pry'
 
-source .dotfiles/git-completion.bash
+source ~/.dotfiles/git-completion.bash
 
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
