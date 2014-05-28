@@ -6,7 +6,7 @@
   "eqnull": true,
   "expr": true,
   "globalstrict": true,
-  "globals": {
+  "predef": {
     "_": false,
     "$": false,
     "Backbone": false,
