@@ -31,11 +31,10 @@
     * rest-client
     * rspec
     * thin
-* nodejs
-* npm
-* postgres.app
+* [NVM](https://github.com/creationix/nvm), then latest Node 10.0
+* [postgres.app](http://postgresapp.com/)
 * mysql
-* imagemagick
+* imagemagick (port install imagemagick)
 * textmate2
     * installed rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
     * set 2 spaces instead of tabs
