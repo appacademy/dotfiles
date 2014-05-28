@@ -31,8 +31,13 @@
     * rails
     * rest-client
     * rspec
+    * rubocop
     * thin
 * [NVM](https://github.com/creationix/nvm), then latest Node 10.0
+* Install global Node modules:
+    * jshint
+    * nodemon
+    * node-inspector
 * [postgres.app](http://postgresapp.com/)
 * mysql
 * imagemagick (port install imagemagick)
@@ -41,6 +46,8 @@
     * set 2 spaces instead of tabs
     * strip whitespace on save
     * https://github.com/bomberstudios/Strip-Whitespace-On-Save.tmbundle
+    * [JSLintMate](http://rondevera.github.io/jslintmate/)
+    * [textmate2-rubocop](https://github.com/mrdougal/textmate2-rubocop)
 * http://superuser.com/questions/192518/image-copy-mac-drive-how-to-do-this
     * Works for *firewire* or *lightning*, not *ethernet* you dope.
     * Hold "T" for clonee computer
