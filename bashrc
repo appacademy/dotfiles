@@ -13,10 +13,8 @@ export MPORTS_DIR=/opt/local/bin:/opt/local/sbin
 # prefer macports stuff
 PATH=$MPORTS_DIR:$PATH
 #export EMACS='/opt/local/bin/emacs'
-export LS='/opt/local/bin/gls'
 
 alias e=emacs
-alias ls='$LS --color=auto'
 alias l='ls'
 
 # I never remember to prefer pry
