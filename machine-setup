@@ -9,7 +9,8 @@
 * meta key in terminal (color, terminal size)
 * macports
 * Download appacademy dotfiles
-* Used rvm install --with-gcc=gcc-4.2
+* Installed rbenv based on instructions: https://github.com/appacademy/meta/blob/master/setup/ruby.md
+* Installed common gems:
     * addressable
     * better_errors, binding_of_caller, meta_request
     * capybara
