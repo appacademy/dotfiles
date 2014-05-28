@@ -29,3 +29,8 @@ eval "$(rbenv init -)"
 
 PATH="/usr/local/mysql/bin:$PATH"
 PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+
+if [ -f ~/.nvm/nvm.sh ]; then
+  source ~/.nvm/nvm.sh
+  nvm alias default 0.10 > /dev/null
+fi
