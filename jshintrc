@@ -1,4 +1,10 @@
 {
+  "browser": true,
+  "camelcase": true,
+  "debug": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "expr": true,
   "globalstrict": true,
   "globals": {
     "_": false,
@@ -17,6 +23,10 @@
     "require": false,
     "window": false
   },
-  "sub": true
+  "jquery": true,
+  "node": true,
+  "proto": true,
+  "sub": true,
+  "undef": true
 }
 
