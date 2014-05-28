@@ -24,9 +24,8 @@ alias irb='pry'
 
 source .dotfiles/git-completion.bash
 
-PATH=$PATH:$HOME/.rvm/bin
-source ~/.rvm/scripts/rvm
-source $rvm_path/scripts/completion
+PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 PATH="/usr/local/mysql/bin:$PATH"
 PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
