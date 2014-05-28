@@ -37,7 +37,7 @@
 * mysql
 * imagemagick
 * textmate2
-    * installed rails, ruby scss bundles; themes; sources bundle
+    * installed rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
     * set 2 spaces instead of tabs
     * strip whitespace on save
     * https://github.com/bomberstudios/Strip-Whitespace-On-Save.tmbundle
