@@ -32,3 +32,6 @@ if [ -f ~/.nvm/nvm.sh ]; then
   source ~/.nvm/nvm.sh
   nvm alias default 0.10 > /dev/null
 fi
+
+# Make new terminal tabs open in last directory.
+PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
