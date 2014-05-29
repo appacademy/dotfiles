@@ -54,6 +54,8 @@
     * Hold "CMD-r" for cloner
     * Go in to disk utility on the cloner
     * Using the utility, delete all partitions on clonee, and create new partitions.
+      * Make Macintosh HD 300 GB
+      * Make both partitions Journaled, case-sensitive
     * Use the disk copy utility to copy over both partitions, one at a time.
 * Hipchat (native, not AIR)
 * sources bundle
