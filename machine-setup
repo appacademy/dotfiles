@@ -18,6 +18,7 @@
     * debugger
     * devise
     * factory_girl
+    * figaro
     * foreman
     * guard
     * heroku
