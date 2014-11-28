@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd ~/.dotfiles
+git pull --quiet
+./install.sh
+
+exit 0
