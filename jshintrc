@@ -21,6 +21,9 @@
     "HandlebarsTemplates",
     "it",
     "module",
+    "NewsReader",
+    "JournalApp",
+    "Trello",
     "require",
     "window"
   ],

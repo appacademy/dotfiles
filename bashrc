@@ -1,6 +1,6 @@
 PROMPT_COLOR='\e[00m\e[31;01;166m'
 export PS1='\['$PROMPT_COLOR'\]\w\$\[\e[0m\] '
-export EDITOR="mate -w"
+export EDITOR="atom"
 
 MILLION=1000000
 export HISTFILESIZE=$MILLION
@@ -19,6 +19,7 @@ alias be="bundle exec"
 alias e=emacs
 alias l='ls'
 alias ls="ls -G"
+
 # I never remember to prefer pry
 alias irb='pry'
 
@@ -28,6 +29,7 @@ PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+PATH="$PATH:$HOME/.bin"
 
 if [ -f ~/.nvm/nvm.sh ]; then
   source ~/.nvm/nvm.sh
@@ -35,3 +37,6 @@ if [ -f ~/.nvm/nvm.sh ]; then
 fi
 
 cp ~/.dotfiles/gitconfig.backup ~/.dotfiles/gitconfig
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

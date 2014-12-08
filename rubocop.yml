@@ -456,3 +456,6 @@ Validation:
   Include:
     - app/models/*.rb
 
+RedundantSelf:
+  Description: "Don't use self where it's not needed."
+  Enabled: false
