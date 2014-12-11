@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd ~/.dotfiles
+git reset --hard
 git pull --quiet
 ./install.sh
 
