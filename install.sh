@@ -10,3 +10,4 @@ ln -sf ~/.dotfiles/jshintrc ~/.jshintrc
 ln -sf ~/.dotfiles/rubocop.yml ~/.rubocop.yml
 ln -sf ~/.dotfiles/vimrc ~/.vimrc
 ln -sf ~/.dotfiles/atom ~/.atom
+ln -sf ~/.dotfiles/sqliterc ~/.sqliterc
