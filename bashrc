@@ -20,9 +20,6 @@ alias e=emacs
 alias l='ls'
 alias ls="ls -G"
 
-# I never remember to prefer pry
-alias irb='pry'
-
 source ~/.dotfiles/git-completion.bash
 
 PATH="$HOME/.rbenv/bin:$PATH"
