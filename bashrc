@@ -14,14 +14,9 @@ export MPORTS_DIR=/opt/local/bin:/opt/local/sbin
 PATH=$MPORTS_DIR:$PATH
 #export EMACS='/opt/local/bin/emacs'
 
-alias ..="cd .."
-alias be="bundle exec"
-alias e=emacs
-alias l='ls'
-alias ls="ls -G"
-
 source ~/.dotfiles/git-completion.bash
 
+# Recommended by rbenv
 PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
@@ -37,3 +32,6 @@ cp ~/.dotfiles/gitconfig.backup ~/.dotfiles/gitconfig
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Load aliases
+[[ -f ~/.aliases ]] && source ~/.aliases

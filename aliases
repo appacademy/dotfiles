@@ -1,0 +1,6 @@
+alias ..="cd .."
+alias be="bundle exec"
+alias e="emacs"
+alias l='ls'
+alias ls="ls -G"
+alias v="vim"
