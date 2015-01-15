@@ -1,4 +1,4 @@
-# Machine Setup
+# App Academy Pairing Station Dotfiles and Setup
 
 ## Configuration
 
@@ -17,18 +17,21 @@
     * setup update_dotfiles to be a login item
 
 ### Editor
-* textmate2
-    * installed rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
+* atom
+    * rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
     * set 2 spaces instead of tabs
-    * strip whitespace on save
-    * https://github.com/bomberstudios/Strip-Whitespace-On-Save.tmbundle
-    * [JSLintMate](http://rondevera.github.io/jslintmate/)
-    * [textmate2-rubocop](https://github.com/mrdougal/textmate2-rubocop)
+    * [Linter-JSHint](https://atom.io/packages/linter-jshint)
+    * [Rubocop](https://atom.io/packages/linter-rubocop)
 
 ### General/System Preferences
 * scroll direction
 * fast key repeat/low delay
-* icons in finder; dock items
+* Dock items:
+    * Finder
+    * Chrome
+    * Atom
+    * iTerm2
+* icons in finder
     * also set default to open home folder
 * meta key in terminal (color, terminal size)
 * Hipchat (native, not AIR)
@@ -61,6 +64,3 @@
         * Make Macintosh HD 300 GB
         * Make both partitions Journaled, case-sensitive
     * Use the disk copy utility to copy over both partitions, one at a time.
-
-## Didn't do
-* SSH keys
