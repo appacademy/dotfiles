@@ -4,6 +4,12 @@
 
 ### Chrome
 * Set so that old tabs open
+* Extensions:
+    * App Academy extension?
+    * JSON Formatter
+    * Markdown Reader
+    * Postman
+    * W3Schools Hider
 
 ### Dotfiles
 * Download appacademy dotfiles
@@ -34,30 +40,8 @@
     * port install gcc48
 * macports
 * rbenv based on instructions: https://github.com/appacademy/meta/blob/master/setup/ruby.md
-* common gems:
-    * addressable
-    * better_errors, binding_of_caller, meta_request
-    * capybara
-    * composite_primary_keys
-    * debugger
-    * devise
-    * factory_girl
-    * figaro
-    * foreman
-    * guard
-    * heroku
-    * kaminari
-    * launchy
-    * letter_opener
-    * nokogiri
-    * oauth, oauth2, omniauth
-    * pg
-    * pry
-    * rails
-    * rest-client
-    * rspec
-    * rubocop
-    * thin
+    * `gem install bundler`
+    * cd to `dotfiles/setup` and run `bundle install`
 * [NVM](https://github.com/creationix/nvm), then latest Node 10.0
 * Install global Node modules:
     * jshint
