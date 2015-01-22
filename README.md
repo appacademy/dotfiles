@@ -1,4 +1,4 @@
-# App Academy Pairing Station Dotfiles and Setup
+# Pairing Station Dotfiles and Setup
 
 ## Configuration
 
@@ -30,7 +30,7 @@
     * Finder
     * Chrome
     * Atom
-    * iTerm2
+    * iTerm2 (set to open new tabs in the previous directory)
 * icons in finder
     * also set default to open home folder
 * meta key in terminal (color, terminal size)
