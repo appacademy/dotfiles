@@ -1,4 +1,4 @@
-ln -sf ~/.dotfiles/bashrc ~/.aliases
+ln -sf ~/.dotfiles/aliases ~/.aliases
 ln -sf ~/.dotfiles/atom ~/.atom
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
 ln -sf ~/.dotfiles/gemrc ~/.gemrc
