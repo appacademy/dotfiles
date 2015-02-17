@@ -6,6 +6,9 @@
   'linter':
     'lintOnChange': false
     'lintOnEditorFocus': false
+    'showHighlighting': false
+  'linter-rubocop':
+    'rubocopExecutablePath': '/Users/appacademy/.rbenv/shims/rubocop'
   'editor':
     'fontSize': 14
     'invisibles': {}
