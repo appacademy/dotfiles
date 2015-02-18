@@ -21,7 +21,7 @@
     * rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
     * set 2 spaces instead of tabs
     * [Linter-JSHint](https://atom.io/packages/linter-jshint)
-    * [Rubocop](https://atom.io/packages/linter-rubocop)
+    * [Rubocop](https://atom.io/packages/linter-rubocop) (Test it. Rubocop historically has had errors.)
 
 ### General/System Preferences
 * scroll direction
