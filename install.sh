@@ -14,3 +14,5 @@ ln -sf ~/.dotfiles/rubocop.yml ~/.rubocop.yml
 ln -sf ~/.dotfiles/sqliterc ~/.sqliterc
 ln -sf ~/.dotfiles/vimrc ~/.vimrc
 cp ~/.dotfiles/atom/config.cson ~/.atom/config.cson
+sudo ln -sF ~/.dotfiles/shortcuts.png /System/Library/CoreServices/DefaultDesktop.jpg
+sudo rm -rf /Library/Caches/com.apple.desktop.admin.png
