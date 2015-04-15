@@ -10,6 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -17,7 +18,7 @@ filetype plugin indent on    " required
 syntax on
 
 set background=dark
-colorscheme Monokai
+colorscheme molokai
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2                    "set default indenting to 2 spaces
