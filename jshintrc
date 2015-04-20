@@ -25,7 +25,8 @@
     "JournalApp",
     "Trello",
     "require",
-    "window"
+    "window",
+    "JST"
   ],
   "jquery": true,
   "node": true,
