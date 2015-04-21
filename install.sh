@@ -13,4 +13,5 @@ ln -sf ~/.dotfiles/rdebugrc ~/.rdebugrc
 ln -sf ~/.dotfiles/rubocop.yml ~/.rubocop.yml
 ln -sf ~/.dotfiles/sqliterc ~/.sqliterc
 ln -sf ~/.dotfiles/vimrc ~/.vimrc
+ln -sf ~/.dotfiles/shortcuts.png ~/Pictures/shortcuts.png
 cp ~/.dotfiles/atom/config.cson ~/.atom/config.cson
