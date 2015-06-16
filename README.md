@@ -40,8 +40,8 @@
 ### Command Line Installs
 * xcode 6.1
     * command line utils `xcode-select --install`
-    * port install gcc48
-* macports
+    * brew install gcc48
+* Homebrew
 * rbenv based on instructions: https://github.com/appacademy/meta/blob/master/setup/ruby.md
     * `gem install bundler`
     * cd to `dotfiles/setup` and run `bundle install`
@@ -52,7 +52,7 @@
     * node-inspector
 * [postgres.app](http://postgresapp.com/)
 * mysql
-* imagemagick (port install imagemagick)
+* imagemagick (brew install imagemagick)
 
 ## Cloning
 * http://superuser.com/questions/192518/image-copy-mac-drive-how-to-do-this

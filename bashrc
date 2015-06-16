@@ -9,11 +9,6 @@ export HISTSIZE=$MILLION
 # update bash history after each command
 export PROMPT_COMMAND="history -a"
 
-export MPORTS_DIR=/opt/local/bin:/opt/local/sbin
-# prefer macports stuff
-PATH=$MPORTS_DIR:$PATH
-#export EMACS='/opt/local/bin/emacs'
-
 source ~/.dotfiles/git-completion.bash
 
 # Recommended by rbenv
