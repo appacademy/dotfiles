@@ -2,7 +2,7 @@
 
 cd ~/.dotfiles
 git stash
-git pull --quiet
+git pull --quiet --hard
 ./install.sh
 
 exit 0
