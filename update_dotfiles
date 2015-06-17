@@ -2,7 +2,9 @@
 
 cd ~/.dotfiles
 git stash
-git pull --quiet --hard
+git checkout master
+git fetch --all
+git reset --hard origin/master
 ./install.sh
 
 exit 0
