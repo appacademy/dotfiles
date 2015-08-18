@@ -24,3 +24,5 @@
     default = upstream
 [core]
     excludesfile = ~/.gitignore
+[credential]
+    helper = cache
