@@ -1,6 +1,8 @@
 alias ..="cd .."
+alias a="atom"
 alias be="bundle exec"
 alias e="emacs"
+alias g="git"
 alias l='ls'
 alias ls="ls -G"
 alias v="vim"
