@@ -5,3 +5,6 @@ alias e="emacs"
 alias l='ls'
 alias ls="ls -G"
 alias v="vim"
+
+# Load local aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

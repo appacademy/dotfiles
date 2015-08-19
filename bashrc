@@ -44,3 +44,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# Load local configuration
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

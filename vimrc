@@ -9,6 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomasr/molokai'
@@ -16,6 +17,7 @@ Plugin 'tomasr/molokai'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
 syntax on
 
 set background=dark
@@ -36,3 +38,8 @@ set laststatus=2
 
 map <C-n> :NERDTreeToggle<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
+
+" Load local configuration
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
