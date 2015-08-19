@@ -14,6 +14,7 @@
     check = diff --cached
     co = checkout
     fix = commit --am
+    l = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
     llog = log --graph --decorate --name-status
     logp = log --graph --decorate -p --word-diff
     rework = rebase --interactive HEAD~10
