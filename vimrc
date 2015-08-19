@@ -34,14 +34,5 @@ set textwidth=72
 set colorcolumn=81                  "show the 80 char rule
 set laststatus=2
 
-" catch common save and quit mistakes
-command WQ wq                       "meant wq
-command Wq wq                       "meant wq
-command W w                         "meant w
-command Q q                         "meant q
-
-" copy visualy selected text to clip board
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
-
 map <C-n> :NERDTreeToggle<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
