@@ -34,6 +34,7 @@
 * System Preferences < Users & Groups < Login Items
     * `~/.dotfiles/update_dotfiles`
     * `~/Documents/app-academy-chrome-tab/update_chrome_tab`
+    * `Applications/Postgres.app`
 
 ### General/System Preferences
 * Scroll direction
