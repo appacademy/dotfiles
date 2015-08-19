@@ -23,8 +23,6 @@ if [ -f ~/.nvm/nvm.sh ]; then
   nvm alias default 0.10 > /dev/null
 fi
 
-cp ~/.dotfiles/gitconfig.backup ~/.dotfiles/gitconfig
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
