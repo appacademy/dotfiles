@@ -1,5 +1,13 @@
-PROMPT_COLOR='\e[00m\e[31;01;166m'
-export PS1='\['$PROMPT_COLOR'\]\w\$\[\e[0m\] '
+source ~/.dotfiles/git-completion.bash
+source ~/.dotfiles/git-prompt.sh
+
+# color constants
+RED='\[\e[0;31m\]'
+WHITE='\[\e[1;37m\]'
+RESET='\[\e[0m\]'
+
+# prompt with git branch info
+export PS1='\['$RED'\]\w\['$WHITE'\]$(__git_ps1)\['$RED'\]\$'$RESET' '
 export EDITOR="atom"
 
 MILLION=1000000
@@ -8,8 +16,6 @@ export HISTSIZE=$MILLION
 
 # update bash history after each command
 export PROMPT_COMMAND="history -a"
-
-source ~/.dotfiles/git-completion.bash
 
 # Recommended by rbenv
 PATH="$HOME/.rbenv/bin:$PATH"
