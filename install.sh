@@ -10,6 +10,7 @@ ln -sf ~/.dotfiles/irbrc ~/.irbrc
 ln -sf ~/.dotfiles/jshintrc ~/.jshintrc
 ln -sf ~/.dotfiles/profile ~/.profile
 ln -sf ~/.dotfiles/pryrc ~/.pryrc
+ln -sf ~/.dotfiles/railsrc ~/.railsrc
 ln -sf ~/.dotfiles/rdebugrc ~/.rdebugrc
 ln -sf ~/.dotfiles/rspec ~/.rspec
 ln -sf ~/.dotfiles/rubocop.yml ~/.rubocop.yml
