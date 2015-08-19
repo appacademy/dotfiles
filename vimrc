@@ -10,6 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
@@ -42,3 +43,5 @@ command Q q                         "meant q
 " copy visualy selected text to clip board
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
+
+map <C-n> :NERDTreeToggle<CR>
