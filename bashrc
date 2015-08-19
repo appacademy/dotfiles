@@ -10,6 +10,16 @@ RESET='\[\e[0m\]'
 export PS1='\['$RED'\]\w\['$WHITE'\]$(__git_ps1)\['$RED'\]\$'$RESET' '
 export EDITOR="atom"
 
+# make `g` behave like `git status` with no args, or `git` with args
+g () {
+  if [ $# -eq 0 ]
+  then
+    git status
+  else
+    git "$@"
+  fi
+}
+
 MILLION=1000000
 export HISTFILESIZE=$MILLION
 export HISTSIZE=$MILLION
