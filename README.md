@@ -94,3 +94,17 @@ brew install imagemagick
         * Make Macintosh HD 300 GB
         * Make both partitions Journaled, case-sensitive
     * Use the disk copy utility to copy over both partitions, one at a time.
+
+## Restoring from backup
+Restore all computers from "Backup" partition before W1D1.
+
+* Boot up the computer and hold "Cmd + R" to get to Disk Utility.
+* Click on the "Backup" partition. Navigate to the "Restore" tab.
+* Drag the "Mac OS X" partition into the section to be overwritten.
+* Click OK (or whatever it's called) to start the backup. This will take
+  a little while.
+* Both partitions will now be named "Backup". Need to rename one "Mac OS X".
+    * Assign Startup Disk to one of the partitions and restart.
+    * In Finder, find "Backup" and rename to "Mac OS X".
+    * Restart computer and go to disk utility again. Reassign Startup Disk
+      to the partition now named "Mac OS X"
