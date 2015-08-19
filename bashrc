@@ -7,7 +7,7 @@ WHITE='\[\e[1;37m\]'
 RESET='\[\e[0m\]'
 
 # prompt with git branch info
-export PS1='\['$RED'\]\w\['$WHITE'\]$(__git_ps1)\['$RED'\]\$'$RESET' '
+export PS1=''$RED'\w'$WHITE'$(__git_ps1)'$RED'\$'$RESET' '
 export EDITOR="atom"
 
 # make `g` behave like `git status` with no args, or `git` with args
