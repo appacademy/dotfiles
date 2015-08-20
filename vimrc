@@ -20,21 +20,24 @@ filetype plugin indent on    " required
 
 syntax on
 
-set background=dark
 colorscheme molokai
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2                    "set default indenting to 2 spaces
+set background=light
+set backspace=2
+set colorcolumn=81                  "show the 80 char rule
 set expandtab
-set noimdisable
 set iminsert=0
 set imsearch=0
-set noswapfile
-set relativenumber                  "set relative numberlines
-set number                          "show the line number of the one i'm on
-set textwidth=72
-set colorcolumn=81                  "show the 80 char rule
 set laststatus=2
+set noimdisable
+set noswapfile
+set number                          "show the line number of the one i'm on
+set relativenumber                  "set relative numberlines
+set shiftwidth=2                    "set default indenting to 2 spaces
+set softtabstop=2
+set splitbelow
+set splitright
+set tabstop=2
+set textwidth=72
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
