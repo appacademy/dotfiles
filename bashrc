@@ -20,6 +20,8 @@ g () {
   fi
 }
 
+__git_complete g _git
+
 MILLION=1000000
 export HISTFILESIZE=$MILLION
 export HISTSIZE=$MILLION
