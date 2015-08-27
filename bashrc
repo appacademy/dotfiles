@@ -31,7 +31,6 @@ export EDITOR="vim"
 export PROMPT_COMMAND="history -a"
 
 # Recommended by rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 export PATH="$PATH:$HOME/.bin"
