@@ -24,7 +24,7 @@
     editor = vim
     excludesfile = ~/.gitignore
 [credential]
-    helper = cache
+    helper = cache --timeout 0
 [push]
     default = upstream
 [rerere]
