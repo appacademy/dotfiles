@@ -30,7 +30,8 @@ export EDITOR="vim"
 # update bash history after each command
 export PROMPT_COMMAND="history -a"
 
-# Recommended by rbenv
+# initialize rbenv
+export PATH="$PATH:$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
 
 export PATH="$PATH:$HOME/.bin"
