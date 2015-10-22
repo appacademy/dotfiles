@@ -55,12 +55,11 @@
 # install Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Homebrew installs
+# Necessary Homebrew installs
 brew install git
-brew install phantomjs
 brew install rbenv
+brew install phantomjs
 brew install qt
-brew install vim
 
 # Ruby setup
 rbenv install 2.1.2
@@ -70,7 +69,9 @@ gem install bundler
 cd ~/.dotfiles/setup
 bundle install
 
-# Other
+# Other handy Brew formulae
+brew install vim
+brew install ag
 brew install imagemagick
 ```
 
@@ -81,7 +82,6 @@ brew install imagemagick
 * Install global Node modules:
     * jshint
     * nodemon
-    * node-inspector
 * [postgres.app](http://postgresapp.com/)
 * mysql
 
