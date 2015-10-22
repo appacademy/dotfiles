@@ -6,7 +6,7 @@
     cm = checkout master
     co = checkout
     fix = commit --am
-    l = log --pretty=format:"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cred[%an]%Creset" --graph --date=short
+    l = log --pretty=format:\"%C(green)%h%C(reset) %C(blue)%ad%C(reset) %s%C(yellow)%d%C(reset) %C(blue)[%an]%C(reset)\" --graph --date=short
     llog = log --graph --decorate --name-status
     logp = log --graph --decorate -p --word-diff
     rework = rebase --interactive HEAD~10
