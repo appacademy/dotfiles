@@ -8,6 +8,7 @@
     * [App Academy Chrome Extension][chrome-extension]
     * JSONView
     * Markdown Reader
+    * React Dev Tools
 
 [chrome-extension]: https://github.com/appacademy/app-academy-chrome-tab
 
@@ -18,9 +19,11 @@
 ### Editor
 * Atom
     * rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
-    * set 2 spaces instead of tabs
-    * [Linter-JSHint](https://atom.io/packages/linter-jshint)
-    * [Rubocop](https://atom.io/packages/linter-rubocop) (Test it. Rubocop historically has had errors.)
+* Install atom packages
+
+  ```
+  $  apm install --packages-file atom-packages.txt
+  ```
 
 ### iTerm
 * set as default program to open shell scripts
@@ -60,6 +63,7 @@ brew install git
 brew install rbenv
 brew install phantomjs
 brew install qt
+brew install bash
 
 # Ruby setup
 rbenv install 2.1.2

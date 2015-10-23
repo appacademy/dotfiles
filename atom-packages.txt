@@ -1,0 +1,6 @@
+jshint
+linter
+linter-rubocop
+react
+rspec
+run-in-atom
