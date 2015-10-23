@@ -1,27 +1,29 @@
-source ~/.dotfiles/git-prompt.sh
-
 # color constants
 RED='\[\e[0;31m\]'
 WHITE='\[\e[1;37m\]'
 RESET='\[\e[0m\]'
 
-### set ENV ###
+### ENV variables ###
 
+# look for commands in these places
 export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
-# prompt with git branch info
-export PS1=''$RED'\w'$WHITE'$(__git_ps1)'$RED'\$'$RESET' '
+# shortened prompt that includes git branch info
+source ~/.dotfiles/git-prompt.sh
+export PS1="$RED\w$WHITE$(__git_ps1)$RED\$$RESET "
 
-# update bash history after each command
+# update bash history after every command instead of waiting until the
+# shell is closed
 export PROMPT_COMMAND="history -a"
 
-MILLION=1000000
-export HISTFILESIZE=$MILLION
-export HISTSIZE=$MILLION
+# expand bash history buffer
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
 
+# make vim the default text editor
 export EDITOR="vim"
 
 ### git ###
