@@ -1,5 +1,4 @@
 ln -sf ~/.dotfiles/aliases ~/.aliases
-ln -sf ~/.dotfiles/atom ~/.atom
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
 ln -sf ~/.dotfiles/emacsrc ~/.emacsrc
 ln -sf ~/.dotfiles/gemrc ~/.gemrc
@@ -8,7 +7,7 @@ ln -sf ~/.dotfiles/gitignore ~/.gitignore
 ln -sf ~/.dotfiles/inputrc ~/.inputrc
 ln -sf ~/.dotfiles/irbrc ~/.irbrc
 ln -sf ~/.dotfiles/jshintrc ~/.jshintrc
-ln -sf ~/.dotfiles/profile ~/.profile
+ln -sf ~/.dotfiles/bash_profile ~/.bash_profile
 ln -sf ~/.dotfiles/pryrc ~/.pryrc
 ln -sf ~/.dotfiles/railsrc ~/.railsrc
 ln -sf ~/.dotfiles/rdebugrc ~/.rdebugrc
