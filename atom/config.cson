@@ -1,18 +1,23 @@
-'global':
-  'exception-reporting':
-    'userId': '21845f4e-c7e6-a2b8-e774-0c52a99b442a'
-  'welcome':
-    'showOnStartup': false
-  'linter':
-    'lintOnChange': false
-    'lintOnEditorFocus': false
-    'showHighlighting': false
-  'linter-rubocop':
-    'rubocopExecutablePath': '/Users/appacademy/.rbenv/shims/rubocop'
-  'editor':
-    'fontSize': 14
-    'invisibles': {}
-  'core':
-    'disabledPackages': [
-      'linter-rubocop'
-    ]
+global:
+  "exception-reporting":
+    userId: "app-academy"
+  welcome:
+    showOnStartup: true
+  core:
+    audioBeep: false
+  editor:
+    fontSize: 14
+    invisibles: {}
+    preferredLineLength: 72
+    showInvisibles: true
+    showIndentGuide: true
+  jshint:
+    supportLintingJsx: true
+  linter:
+    lintOnChange: false
+    lintOnEditorFocus: false
+    showHighlighting: false
+  "linter-rubocop":
+    rubocopExecutablePath: "/Users/appacademy/.rbenv/shims/rubocop"
+  "markdown-preview":
+    liveUpdate: false
