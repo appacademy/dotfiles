@@ -1,39 +1,32 @@
 {
-  "browser": true,
   "camelcase": true,
-  "debug": true,
   "eqeqeq": true,
   "eqnull": true,
   "expr": true,
   "globalstrict": true,
-  "predef": [
-    "_",
-    "$",
-    "Pokedex",
-    "alert",
-    "Backbone",
-    "beforeEach",
-    "console",
-    "describe",
-    "document",
-    "expect",
-    "exports",
-    "Handlebars",
-    "HandlebarsTemplates",
-    "it",
-    "module",
-    "NewsReader",
-    "JournalApp",
-    "Trello",
-    "require",
-    "window",
-    "JST"
-  ],
-  "jquery": true,
-  "node": true,
-  "proto": true,
   "strict": false,
   "sub": true,
-  "undef": true
-}
+  "undef": true,
+  "predef": [
+    "console",
 
+    "_",
+    "Backbone",
+    "EventEmitter",
+    "Flux",
+    "Handlebars",
+    "HandlebarsTemplates",
+    "JST",
+    "React",
+    "ReactRouter",
+
+    "beforeEach",
+    "describe",
+    "expect",
+    "it"
+  ],
+  "browser": true,
+  "node": true,
+  "jquery": true,
+  "proto": true
+}
