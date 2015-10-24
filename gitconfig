@@ -12,6 +12,7 @@
     llog = log --graph --decorate --name-status
     logp = log --graph --decorate -p --word-diff
     rework = rebase --interactive HEAD~10
+    s = status
     wcheck = diff --cached --color-words
     wdiff = diff --color-words
     wshow = show --color-words

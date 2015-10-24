@@ -14,7 +14,7 @@
 
 ### Dotfiles
 * Clone this repo to `~/.dotfiles`
-* Run `~/dotfiles/install.sh`
+* Run `~/.dotfiles/install.sh`
 
 ### Editor
 * Atom
@@ -22,7 +22,7 @@
 * Install atom packages
 
   ```
-  $  apm install --packages-file atom-packages.txt
+  $  apm install --packages-file ~/.dotfiles/atom-packages.txt
   ```
 
 ### iTerm
@@ -63,7 +63,7 @@ brew install git
 brew install rbenv
 brew install phantomjs
 brew install qt
-brew install bash
+brew install heroku
 
 # Ruby setup
 rbenv install 2.1.2

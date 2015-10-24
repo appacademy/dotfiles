@@ -44,9 +44,6 @@ __git_complete g _git
 
 ### other ###
 
-# set shell options
-shopt -so autocd globstar histappend
-
 # initialize rbenv
 eval "$(rbenv init -)"
 
