@@ -1,25 +1,23 @@
-{
-    "env": {
-        "browser": true,
-        "node": true,
-        "jquery": true,
-        "mocha": true,
-        "jasmine": true
-    },
-    "ecmaFeatures": {
-        "jsx": true
-    },
-    "globals": {
-        "_": false,
-        "EventEmitter": false,
-        "Flux": false,
-        "React": false,
-        "ReactRouter": false
-    },
-    "rules": {
-        "camelcase": 1,
-        "no-unused-vars": 1,
-        "quotes": 0,
-        "strict": 0
-    }
-}
+---
+  env:
+    browser: true
+    node: true
+    jquery: true
+    mocha: true
+    jasmine: true
+  ecmaFeatures:
+    jsx: true
+  globals:
+    _: false
+    EventEmitter: false
+    Flux: false
+    React: false
+    ReactRouter: false
+  rules:
+    camelcase: 1
+    no-console: 1
+    no-debugger : 1
+    no-unused-vars: 1
+    no-warning-comments: 1
+    quotes: 0
+    strict: 0
