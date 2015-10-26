@@ -4,6 +4,9 @@ global:
   welcome:
     showOnStartup: true
   core:
+    disabledPackages: [
+      "jshint"
+    ]
     audioBeep: false
   editor:
     fontSize: 14
@@ -14,10 +17,9 @@ global:
   jshint:
     supportLintingJsx: true
   linter:
-    lintOnChange: false
-    lintOnEditorFocus: false
-    showHighlighting: false
+    ignoreVCSIgnoredFiles: false
+    showErrorTabLine: true
+  "linter-eslint":
+    globalNodePath: "/usr/local"
   "linter-rubocop":
     rubocopExecutablePath: "/Users/appacademy/.rbenv/shims/rubocop"
-  "markdown-preview":
-    liveUpdate: false

@@ -1,0 +1,19 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "jquery": true,
+        "mocha": true,
+        "jasmine": true
+    },
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "globals": {
+        "_": false,
+        "EventEmitter": false,
+        "Flux": false,
+        "React": false,
+        "ReactRouter": false
+    }
+}
