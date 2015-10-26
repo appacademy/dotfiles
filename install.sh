@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# link dotfiles
+
 ln -sf ~/.dotfiles/aliases ~/.aliases
 ln -sf ~/.dotfiles/bashrc ~/.bashrc
 ln -sf ~/.dotfiles/emacsrc ~/.emacsrc
@@ -17,3 +21,6 @@ ln -sf ~/.dotfiles/sqliterc ~/.sqliterc
 ln -sf ~/.dotfiles/vimrc ~/.vimrc
 ln -sf ~/.dotfiles/shortcuts.png ~/Pictures/shortcuts.png
 cp ~/.dotfiles/atom/config.cson ~/.atom/config.cson
+
+# install packages
+~/.dotfiles/setup/install.sh
