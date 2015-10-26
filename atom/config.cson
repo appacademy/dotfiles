@@ -23,4 +23,4 @@ global:
     globalNodePath: "/usr/local"
     useGlobalEslint: true
   "linter-rubocop":
-    command: "/Users/appacademy/.rbenv/shims/rubocop"
+    executablePath: "/Users/appacademy/.rbenv/shims/rubocop"
