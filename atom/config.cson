@@ -21,5 +21,6 @@ global:
     showErrorTabLine: true
   "linter-eslint":
     globalNodePath: "/usr/local"
+    useGlobalEslint: true
   "linter-rubocop":
-    rubocopExecutablePath: "/Users/appacademy/.rbenv/shims/rubocop"
+    command: "/Users/appacademy/.rbenv/shims/rubocop"
