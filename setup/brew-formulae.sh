@@ -1,0 +1,9 @@
+ag
+git
+heroku
+imagemagick
+node
+phantomjs
+qt
+rbenv
+vim
