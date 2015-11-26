@@ -2,7 +2,7 @@ global:
   "exception-reporting":
     userId: "app-academy"
   welcome:
-    showOnStartup: true
+    showOnStartup: false
   core:
     disabledPackages: [
       "linter-rubocop",
