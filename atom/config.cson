@@ -5,6 +5,7 @@ global:
     showOnStartup: true
   core:
     disabledPackages: [
+      "linter-rubocop",
       "jshint"
     ]
     audioBeep: false
