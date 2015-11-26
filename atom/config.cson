@@ -18,11 +18,11 @@ global:
   jshint:
     supportLintingJsx: true
   linter:
+    lintOnFly: false
     ignoreVCSIgnoredFiles: false
     statusIconScope: "File"
-    displayLinterInfo: false
     showErrorTabLine: true
-    errorPanelHeight: 100
+    errorPanelHeight: 180
     showErrorPanel: false
     showErrorTabProject: false
   "linter-eslint":

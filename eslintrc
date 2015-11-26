@@ -14,6 +14,33 @@
     React: false
     ReactRouter: false
   rules:
+    comma-dangle: 0
+    no-cond-assign: 2
+    no-console: 0
+    no-constant-condition: 1
+    no-control-regex: 2
+    no-debugger: 1
+    no-dupe-args: 2
+    no-dupe-keys: 2
+    no-duplicate-case: 2
+    no-empty-character-class: 2
+    no-empty: 1
+    no-ex-assign: 2
+    no-extra-boolean-cast: 2
+    no-extra-parens: 0
+    no-extra-semi: 2
+    no-func-assign: 2
+    no-inner-declarations: 2
+    no-invalid-regexp: 2
+    no-irregular-whitespace: 2
+    no-negated-in-lhs: 2
+    no-obj-calls: 2
+    no-regex-spaces: 2
+    no-sparse-arrays: 2
+    no-unexpected-multiline: 1
+    no-unreachable: 2
+    use-isnan: 1
+    valid-typeof: 2
     no-delete-var: 1
     no-label-var: 2
     no-shadow-restricted-names: 2
@@ -27,10 +54,8 @@
       - properties: never
     eqeqeq: 1
     guard-for-in: 1
-    no-debugger : 1
     no-warning-comments: 1
     no-alert: 0
-    no-console: 0
     no-else-return: 0
     no-eq-null: 1
     no-eval: 1
