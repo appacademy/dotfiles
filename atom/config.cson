@@ -18,9 +18,16 @@ global:
     supportLintingJsx: true
   linter:
     ignoreVCSIgnoredFiles: false
+    statusIconScope: "File"
+    displayLinterInfo: false
     showErrorTabLine: true
+    errorPanelHeight: 100
+    showErrorPanel: false
+    showErrorTabProject: false
   "linter-eslint":
     globalNodePath: "/usr/local"
     useGlobalEslint: true
   "linter-rubocop":
     executablePath: "/Users/appacademy/.rbenv/shims/rubocop"
+  "markdown-preview":
+    liveUpdate: false

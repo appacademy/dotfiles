@@ -14,10 +14,44 @@
     React: false
     ReactRouter: false
   rules:
-    camelcase: 1
-    no-console: 1
+    no-delete-var: 1
+    no-label-var: 2
+    no-shadow-restricted-names: 2
+    no-shadow: 2
+    no-undef: 2
+    no-undefined: 2
+    no-unused-vars: 0
+    no-use-before-define: 1
+    camelcase:
+      - 1
+      - properties: never
+    eqeqeq: 1
+    guard-for-in: 1
     no-debugger : 1
-    no-unused-vars: 1
     no-warning-comments: 1
+    no-alert: 0
+    no-console: 0
+    no-else-return: 0
+    no-eq-null: 1
+    no-eval: 1
+    no-extend-native: 1
+    no-extra-bind: 1
+    no-fallthrough: 1
+    no-implicit-coercion: 1
+    no-invalid-this: 1
+    no-lone-blocks: 1
+    no-loop-func: 1
+    no-native-reassign: 1
+    no-octal: 1
+    no-param-reassign: 0
+    no-proto: 2
+    no-redeclare: 1
+    no-return-assign: 2
+    no-unused-expressions: 1
+    no-useless-call: 1
+    no-with: 2
     quotes: 0
     strict: 0
+    vars-on-top: 0
+    wrap-iife: 0
+    yoda: 0
