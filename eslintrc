@@ -20,6 +20,10 @@
     comma-dangle: 0
     eqeqeq: 1
     guard-for-in: 1
+    max-len:
+      - 1
+      - 80
+      - 4
     no-alert: 0
     no-cond-assign: 2
     no-console: 0
@@ -36,7 +40,7 @@
     no-eq-null: 1
     no-eval: 1
     no-ex-assign: 2
-    no-extend-native: 1
+    no-extend-native: 0
     no-extra-bind: 1
     no-extra-boolean-cast: 2
     no-extra-parens: 0
@@ -74,6 +78,9 @@
     no-warning-comments: 1
     no-with: 2
     quotes: 0
+    semi:
+      - 2
+      - always
     strict: 0
     use-isnan: 1
     valid-typeof: 2
