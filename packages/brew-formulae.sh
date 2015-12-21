@@ -4,6 +4,7 @@ heroku
 imagemagick
 node
 phantomjs
+postgres
 qt
 rbenv
 vim
