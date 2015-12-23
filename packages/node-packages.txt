@@ -1,3 +1,4 @@
 eslint
 jshint
 node-inspector
+webpack
