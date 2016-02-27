@@ -5,8 +5,13 @@
     jquery: true
     mocha: true
     jasmine: true
+  # jsx for 1.x
   ecmaFeatures:
     jsx: true
+  # jsx for 2.x
+  parserOptions:
+    ecmaFeatures:
+      jsx: true
   globals:
     _: false
     EventEmitter: false
