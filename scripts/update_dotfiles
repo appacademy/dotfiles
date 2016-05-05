@@ -3,7 +3,7 @@
 cd ~/.dotfiles
 git stash
 git checkout master
-git fetch --all
+git fetch origin master
 git reset --hard origin/master
 ./install.sh
 
