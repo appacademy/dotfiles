@@ -5,6 +5,4 @@ git stash
 git checkout master
 git fetch origin master
 git reset --hard origin/master
-./install.sh
-
-exit 0
+./install_dotfiles

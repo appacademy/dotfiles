@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # go to script directory
-cd "$( dirname "${BASH_SOURCE[0]}" )"
+cd "$( dirname "$0" )/../packages"
 
 #install brew formulae
 brew install $(cat "brew-formulae.txt")
