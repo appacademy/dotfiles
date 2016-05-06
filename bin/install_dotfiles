@@ -1,23 +1,30 @@
 #!/bin/bash
 
-dotfiles="$( cd "$( dirname "$0" )/.." && pwd )"
+repo="$( cd "$( dirname "$0" )/.." && pwd )"
+dot="$repo/dot"
 
-ln -sf "$dotfiles/aliases" ~/.aliases
-ln -sf "$dotfiles/bashrc" ~/.bashrc
-ln -sf "$dotfiles/emacsrc" ~/.emacsrc
-ln -sf "$dotfiles/eslintrc" ~/.eslintrc
-ln -sf "$dotfiles/gemrc" ~/.gemrc
-ln -sf "$dotfiles/gitconfig" ~/.gitconfig
-ln -sf "$dotfiles/gitignore" ~/.gitignore
-ln -sf "$dotfiles/inputrc" ~/.inputrc
-ln -sf "$dotfiles/irbrc" ~/.irbrc
-ln -sf "$dotfiles/jshintrc" ~/.jshintrc
-ln -sf "$dotfiles/bash_profile" ~/.bash_profile
-ln -sf "$dotfiles/pryrc" ~/.pryrc
-ln -sf "$dotfiles/railsrc" ~/.railsrc
-ln -sf "$dotfiles/rdebugrc" ~/.rdebugrc
-ln -sf "$dotfiles/rspec" ~/.rspec
-ln -sf "$dotfiles/rubocop.yml" ~/.rubocop.yml
-ln -sf "$dotfiles/sqliterc" ~/.sqliterc
-# ln -sf "$dotfiles/vimrc" ~/.vimrc
-cp "$dotfiles/atom/config.cson" ~/.atom/config.cson
+ln -sf "$dot/aliases" ~/.aliases
+ln -sf "$dot/emacsrc" ~/.emacsrc
+ln -sf "$dot/eslintrc" ~/.eslintrc
+ln -sf "$dot/gemrc" ~/.gemrc
+ln -sf "$dot/gitconfig" ~/.gitconfig
+ln -sf "$dot/gitignore" ~/.gitignore
+ln -sf "$dot/inputrc" ~/.inputrc
+ln -sf "$dot/irbrc" ~/.irbrc
+ln -sf "$dot/jshintrc" ~/.jshintrc
+ln -sf "$dot/bash_profile" ~/.bash_profile
+ln -sf "$dot/pryrc" ~/.pryrc
+ln -sf "$dot/railsrc" ~/.railsrc
+ln -sf "$dot/rdebugrc" ~/.rdebugrc
+ln -sf "$dot/rspec" ~/.rspec
+ln -sf "$dot/rubocop.yml" ~/.rubocop.yml
+ln -sf "$dot/sqliterc" ~/.sqliterc
+# ln -sf "$dot/vimrc" ~/.vimrc
+
+cp "$dot/atom/config.cson" ~/.atom/config.cson
+
+# dynamically set bashrc
+echo "# set dotfiles location
+export DOTFILES=\"$repo\"
+" > ~/.xbashrc
+cat "$dot/bashrc" >> ~/.xbashrc

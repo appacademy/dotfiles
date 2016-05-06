@@ -1,8 +1,10 @@
 #!/bin/bash
 
-cd ~/.dotfiles
+cd "$( dirname "$0" )/.."
+
 git stash
 git checkout master
 git fetch origin master
 git reset --hard origin/master
-./install_dotfiles
+
+bin/install_dotfiles

@@ -12,7 +12,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
 # shortened prompt that includes git branch info
-source ~/.dotfiles/git-prompt.sh
+source "$DOTFILES/git-prompt.sh"
 export PS1="$RED\w$WHITE$(__git_ps1)$RED\$$RESET "
 
 # update bash history after every command instead of waiting until the
@@ -29,7 +29,7 @@ export EDITOR="vim"
 ### git ###
 
 # setup git completion
-source ~/.dotfiles/git-completion.bash
+source "$DOTFILES/git-completion.bash"
 
 # make `g` behave like `git status` with no args, or `git` with args
 g () {
