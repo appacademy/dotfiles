@@ -47,11 +47,9 @@ __git_complete g _git
 # initialize rbenv
 eval "$(rbenv init -)"
 
-# setup node version manager
-if [ -f ~/.nvm/nvm.sh ]; then
-  source ~/.nvm/nvm.sh
-  nvm alias default 0.10 > /dev/null
-fi
+# initialize node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases

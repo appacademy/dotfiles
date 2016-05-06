@@ -18,6 +18,10 @@ rbenv rehash
 bundle install
 rbenv rehash
 
+# install nvm & node
+./install_nvm
+nvm install v4.4.3
+
 # install node & atom packages
 npm install -g $(cat "node-packages.txt")
 apm install --packages-file "atom-packages.txt"
