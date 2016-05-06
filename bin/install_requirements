@@ -30,8 +30,7 @@ installing NVM & Node...
 "
 git clone https://github.com/creationix/nvm.git ~/.nvm \
   && cd ~/.nvm \
-  && git checkout `git describe --abbrev=0 --tags` \
-  || exit 1
+  && git checkout `git describe --abbrev=0 --tags`
 export NVM_DIR="$( pwd )"
 source nvm.sh
 cd "$requirements_dir"
