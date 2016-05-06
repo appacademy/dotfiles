@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # go to script directory
-cd "$( dirname "$0" )/../packages"
-packages_dir="$( pwd )"
+cd "$( dirname "$0" )/../requirements"
+requirements_dir="$( pwd )"
 
 echo "
 installing Brew formulae...
@@ -34,7 +34,7 @@ git clone https://github.com/creationix/nvm.git ~/.nvm \
   || exit 1
 export NVM_DIR="$( pwd )"
 source nvm.sh
-cd "$packages_dir"
+cd "$requirements_dir"
 nvm install v4.4.3 || exit 1
 
 echo "
