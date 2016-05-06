@@ -1,4 +1,4 @@
 eslint
-jshint
 node-inspector
 webpack
+json

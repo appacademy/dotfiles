@@ -5,8 +5,7 @@ global:
     showOnStartup: false
   core:
     disabledPackages: [
-      "linter-rubocop",
-      "jshint"
+      "linter-rubocop"
     ]
     audioBeep: false
   editor:
@@ -15,8 +14,6 @@ global:
     preferredLineLength: 72
     showInvisibles: true
     showIndentGuide: true
-  jshint:
-    supportLintingJsx: true
   linter:
     lintOnFly: false
     ignoreVCSIgnoredFiles: false

@@ -1,4 +1,3 @@
-jshint
 linter
 linter-eslint
 linter-rubocop
