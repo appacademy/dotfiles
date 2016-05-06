@@ -2,26 +2,45 @@
 
 # go to script directory
 cd "$( dirname "$0" )/../packages"
+packages_dir="$( pwd )"
 
-#install brew formulae
+echo "
+installing Brew formulae...
+"
 brew install $(cat "brew-formulae.txt") || exit 1
 
-# install ruby
+echo "
+installing Ruby...
+"
 eval "$(rbenv init -)" || exit 1
 rbenv install 2.3.1
 rbenv global 2.3.1
 rbenv rehash
 
-# install gems
+echo "
+installing Ruby gems...
+"
 gem install bundler
 rbenv rehash
 bundle install
 rbenv rehash
 
-# install nvm & node
-./install_nvm  || exit 1
+echo "
+installing NVM & Node...
+"
+git clone https://github.com/creationix/nvm.git ~/.nvm \
+  && cd ~/.nvm \
+  && git checkout `git describe --abbrev=0 --tags` \
+  || exit 1
+cd "$packages_dir"
 nvm install v4.4.3
 
-# install node & atom packages
+echo "
+installing node & atom packages...
+"
 npm install -g $(cat "node-packages.txt")
 apm install --packages-file "atom-packages.txt"
+
+echo "
+done.
+"
