@@ -4,10 +4,10 @@
 cd "$( dirname "$0" )/../packages"
 
 #install brew formulae
-brew install $(cat "brew-formulae.txt")
+brew install $(cat "brew-formulae.txt") || exit 1
 
 # install ruby
-eval "$(rbenv init -)"
+eval "$(rbenv init -)" || exit 1
 rbenv install 2.1.2
 rbenv global 2.1.2
 rbenv rehash
@@ -19,7 +19,7 @@ bundle install
 rbenv rehash
 
 # install nvm & node
-./install_nvm
+./install_nvm  || exit 1
 nvm install v4.4.3
 
 # install node & atom packages
