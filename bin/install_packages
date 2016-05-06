@@ -32,8 +32,10 @@ git clone https://github.com/creationix/nvm.git ~/.nvm \
   && cd ~/.nvm \
   && git checkout `git describe --abbrev=0 --tags` \
   || exit 1
+export NVM_DIR="$( pwd )"
+source nvm.sh
 cd "$packages_dir"
-nvm install v4.4.3
+nvm install v4.4.3 || exit 1
 
 echo "
 installing node & atom packages...
