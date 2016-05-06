@@ -4,6 +4,8 @@ repo="$( cd "$( dirname "$0" )/.." && pwd )"
 dot="$repo/dot"
 
 ln -sf "$dot/aliases" ~/.aliases
+ln -sf "$dot/bash_profile" ~/.bash_profile
+ln -sf "$dot/bashrc" ~/.bashrc
 ln -sf "$dot/emacsrc" ~/.emacsrc
 ln -sf "$dot/eslintrc" ~/.eslintrc
 ln -sf "$dot/gemrc" ~/.gemrc
@@ -12,7 +14,6 @@ ln -sf "$dot/gitignore" ~/.gitignore
 ln -sf "$dot/inputrc" ~/.inputrc
 ln -sf "$dot/irbrc" ~/.irbrc
 ln -sf "$dot/jshintrc" ~/.jshintrc
-ln -sf "$dot/bash_profile" ~/.bash_profile
 ln -sf "$dot/pryrc" ~/.pryrc
 ln -sf "$dot/railsrc" ~/.railsrc
 ln -sf "$dot/rdebugrc" ~/.rdebugrc
@@ -22,9 +23,3 @@ ln -sf "$dot/sqliterc" ~/.sqliterc
 # ln -sf "$dot/vimrc" ~/.vimrc
 
 cp "$dot/atom/config.cson" ~/.atom/config.cson
-
-# dynamically set bashrc
-echo "# set dotfiles location
-export DOTFILES=\"$repo\"
-" > ~/.xbashrc
-cat "$dot/bashrc" >> ~/.xbashrc

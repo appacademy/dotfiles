@@ -11,6 +11,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
+# dotfiles repo
+export DOTFILES="$( cd "$( dirname "$( readlink ~/.bashrc )" )/.." && pwd )"
+
 # shortened prompt that includes git branch info
 source "$DOTFILES/git-prompt.sh"
 export PS1="$RED\w$WHITE$(__git_ps1)$RED\$$RESET "
