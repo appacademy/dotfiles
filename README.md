@@ -1,115 +1,87 @@
-# Pairing Station Dotfiles and Setup
+# App Academy Dotfiles
 
-## Configuration
+This is the one repo you need to set up your Mac for App Academy. It
+automates the setup process to make your life easier.
 
-### Chrome
-* Set up an App Academy Student user (no email)
-* Extensions:
-    * [App Academy Chrome Extension][chrome-extension]
-    * JSONView
-    * Markdown Reader
-    * React Dev Tools
+## Preparing your machine for Dotfiles.
 
-[chrome-extension]: https://github.com/appacademy/app-academy-chrome-tab
+You'll need to follow a few steps before you can use the install scripts
+in this repo. Some of these require you to use a terminal. Copy the
+given code and paste it in to run these steps.
 
-### Dotfiles
-* Clone this repo to `~/.dotfiles`
-* Run `~/.dotfiles/install.sh`
+### Install the Xcode Command Line tools.
 
-### Editor
-* Atom
-    * rails, ruby scss bundles; themes; sources, YAML, Ruby Sass, RSpec, bundle
-* Install atom packages
+1. Make sure that Xcode is installed and updated in the App Store.
+2. Install the tools
 
   ```
-  $  apm install --packages-file ~/.dotfiles/atom-packages.txt
+  xcode-select --install
   ```
 
-### iTerm
-* set as default program to open shell scripts
-    * navigate to ~/.dotfiles, find `update_dotfiles`
-    * right click, **Get Info**, choose "Open with: iTerm"
-    * click **Change All**
-* Settings > Profiles > General
-    * Reuse previous session's directory
+### Change ownership of `/usr/local` (optional).
 
-### Startup Items
-* System Preferences < Users & Groups < Login Items
-    * `~/.dotfiles/update_dotfiles`
-    * `~/Documents/app-academy-chrome-tab/update_chrome_tab`
-    * `Applications/Postgres.app`
+This step is optional. It will allow you to manage Homebrew and its
+packages without the use of `sudo`. If you choose not to do this, you
+will be prompted for your password during the install step.
 
-### General/System Preferences
-* Scroll direction
-* Fast key repeat/low delay
-* Map caps lock to control
-* Dock items:
-    * Finder
-    * Chrome
-    * Atom
-    * iTerm2
-* Icons in finder
-    * Set default to open home folder
-* Meta key in terminal (color, terminal size)
-* Slack/Hipchat
-
-### Command Line Installs
 ```
-# install Homebrew
+sudo chown -R "$USER" /usr/local
+```
+
+### Install Homebrew.
+
+This command will download and install Homebrew, which is a CLI package
+manager for OS X.
+
+```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# Necessary Homebrew installs
-brew install git
-brew install rbenv
-brew install phantomjs
-brew install qt
-brew install heroku
-
-# Ruby setup
-rbenv install 2.1.2
-rbenv global 2.1.2
-rbenv rehash
-gem install bundler
-cd ~/.dotfiles/setup
-bundle install
-
-# Other handy Brew formulae
-brew install vim
-brew install ag
-brew install imagemagick
 ```
 
-* xcode 6.1
-    * command line utils `xcode-select --install`
-    * brew install gcc48
-* [NVM](https://github.com/creationix/nvm), then latest Node 10.0
-* Install global Node modules:
-    * jshint
-    * nodemon
-* [postgres.app](http://postgresapp.com/)
-* mysql
+### Install Postgres App.
 
-## Cloning
-* http://superuser.com/questions/192518/image-copy-mac-drive-how-to-do-this
-    * Works for *firewire* or *lightning*, not *ethernet* you dope.
-    * Hold "t" (lower-case) for clonee computer
-    * Hold "CMD-r" for cloner
-    * Go in to disk utility on the cloner
-    * Using the utility, delete all partitions on clonee, and create new partitions.
-        * Make Macintosh HD 300 GB
-        * Make both partitions Journaled, case-sensitive
-    * Use the disk copy utility to copy over both partitions, one at a time.
+This is the PostgreSQL server we'll be using. Download it
+[here](http://postgresapp.com/).
 
-## Restoring from backup
-Restore all computers from "Backup" partition before W1D1.
+Once it's been installed, open it up. You'll need to click through the
+dialog warning you about the dangers of internet downloads.
 
-* Boot up the computer and hold "Cmd + R" to get to Disk Utility.
-* Click on the "Backup" partition. Navigate to the "Restore" tab.
-* Drag the "Mac OS X" partition into the section to be overwritten.
-* Click OK (or whatever it's called) to start the backup. This will take
-  a little while.
-* Both partitions will now be named "Backup". Need to rename one "Mac OS X".
-    * Assign Startup Disk to one of the partitions and restart.
-    * In Finder, find "Backup" and rename to "Mac OS X".
-    * Restart computer and go to disk utility again. Reassign Startup Disk
-      to the partition now named "Mac OS X"
+### Install Atom Text Editor (optional).
+
+This is the text editor we use at App Academy. The dotfiles installer
+will install our suite of packages and configuration for Atom, but only
+if you've already installed it.
+
+You can download it [here](https://atom.io/).
+
+Open it up and click through the dialog like you did with Postgres.
+
+## Using the Dotfiles repo.
+
+### Download Dotfiles.
+
+```
+cd ~
+git clone https://github.com/appacademy/dotfiles.git .dotfiles
+```
+
+### Install the requirements.
+
+This will install all the requirements, including Ruby and Node, various
+Gems and Node packages, and some Atom packages.
+
+```
+~/.dotfiles/bin/install_requirements
+```
+
+### Install the configuration files.
+
+This will copy over all the configuration files, including Bash and
+linting for JavaScript files.
+
+```
+~/.dotfiles/bin/install_dotfiles
+```
+
+## That's it!
+
+You're done! No more installation required.
