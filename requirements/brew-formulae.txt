@@ -2,7 +2,6 @@ ag
 git
 heroku
 imagemagick
-phantomjs
 qt
 rbenv
 vim
