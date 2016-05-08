@@ -28,15 +28,6 @@ will be prompted for your password during the install step.
 sudo chown -R "$USER" /usr/local
 ```
 
-### Install Homebrew.
-
-This command will download and install Homebrew, which is a CLI package
-manager for OS X.
-
-```
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
 ### Install Postgres App.
 
 This is the PostgreSQL server we'll be using. Download it

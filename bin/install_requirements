@@ -1,47 +1,94 @@
 #!/bin/bash
+RED='\033[0;31m'
+PURPLE='\033[0;35m'
+RESET='\033[0m'
+script="$(basename $0)"
 
-# go to script directory
+log() {
+  echo -e "${PURPLE}${script}:${RESET} $1"
+}
+
+fail() {
+  echo -e "${RED}${script} failed:${RESET} $1" >&2
+  exit 1
+}
+
 cd "$( dirname "$0" )/../requirements"
 requirements_dir="$( pwd )"
 
-echo "
-installing Brew formulae...
-"
-brew install $(cat "brew-formulae.txt") || exit 1
+maybesudo="$([[ "$(stat -f %Su /usr/local)" == "$USER" ]] || echo "sudo")"
 
-echo "
-installing Ruby...
-"
-eval "$(rbenv init -)" || exit 1
-rbenv install 2.3.1
-rbenv global 2.3.1
-rbenv rehash
+log "Installing Homebrew..."
+if which brew > /dev/null; then
+  log "Hombrew already installed."
+else
+  $maybesudo ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+    || fail "could not install Homebrew"
+  log "Hombrew installed."
+fi
 
-echo "
-installing Ruby gems...
-"
-gem install bundler
+log "Installing Brew formulae..."
+$maybesudo brew install $(cat "brew-formulae.txt") \
+  || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
+log "Brew formulae installed."
+
+if which rvm > /dev/null; then
+  log "rvm detected. Imploding..."
+  rvm implode
+  log "rvm imploded."
+fi
+
+log "Installing Ruby..."
+eval "$(rbenv init -)" || fail "could not activate rbenv"
+if rbenv global 2.3.1; then
+  log "Ruby already installed"
+else
+  rbenv install 2.3.1
+  rbenv global 2.3.1
+  rbenv rehash
+  log "Ruby installed."
+fi
+
+log "Installing Ruby gems..."
+gem which bundler || gem install bundler
 rbenv rehash
 bundle install
 rbenv rehash
+log "Gems installed."
 
-echo "
-installing NVM & Node...
-"
-git clone https://github.com/creationix/nvm.git ~/.nvm \
-  && cd ~/.nvm \
-  && git checkout `git describe --abbrev=0 --tags`
-export NVM_DIR="$( pwd )"
+log "Installing NVM..."
+if [[ -z "$NVM_DIR" ]]; then
+  git clone https://github.com/creationix/nvm.git ~/.nvm \
+    && cd ~/.nvm \
+    && git checkout `git describe --abbrev=0 --tags` \
+    || fail "could not install NVM"
+  export NVM_DIR="$( pwd )"
+  log "NVM installed."
+else
+  log "NVM already installed."
+fi
+log "Activating NVM..."
+cd "$NVM_DIR"
 source nvm.sh
 cd "$requirements_dir"
-nvm install v4.4.3 || exit 1
+log "NVM Activated."
 
-echo "
-installing node & atom packages...
-"
+log "Installing Node..."
+if nvm ls "4.4.3" > /dev/null; then
+  log "Node already installed."
+else
+  nvm install v4.4.3 || fail "could not install Node"
+  log "Node Installed."
+fi
+
+log "Installing node packages..."
 npm install -g $(cat "node-packages.txt")
-apm install --packages-file "atom-packages.txt"
+log "Node packages installed."
 
-echo "
-done.
-"
+if which atom > /dev/null; then
+  log "Installing atom packages..."
+  apm install --packages-file "atom-packages.txt"
+  log "Atom packages installed."
+fi
+
+log "done."
