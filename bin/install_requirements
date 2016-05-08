@@ -18,7 +18,9 @@ requirements_dir="$( pwd )"
 
 log "Installing Homebrew..."
 if which brew > /dev/null; then
-  log "Hombrew already installed."
+  log "Hombrew already installed. Updating..."
+  brew update
+  log "Hombrew updated."
 else
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
     || fail "could not install Homebrew"
