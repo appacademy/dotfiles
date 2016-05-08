@@ -18,11 +18,10 @@ given code and paste it in to run these steps.
   xcode-select --install
   ```
 
-### Change ownership of `/usr/local` (optional).
+### Change ownership of `/usr/local`.
 
-This step is optional. It will allow you to manage Homebrew and its
-packages without the use of `sudo`. If you choose not to do this, you
-will be prompted for your password during the install step.
+This will allow you to manage Homebrew and its packages without the use
+of `sudo`. Some packages do not behave well if you do not do this.
 
 ```
 sudo chown -R "$USER" /usr/local

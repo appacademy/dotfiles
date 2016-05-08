@@ -16,19 +16,17 @@ fail() {
 cd "$( dirname "$0" )/../requirements"
 requirements_dir="$( pwd )"
 
-maybesudo="$([[ "$(stat -f %Su /usr/local)" == "$USER" ]] || echo "sudo")"
-
 log "Installing Homebrew..."
 if which brew > /dev/null; then
   log "Hombrew already installed."
 else
-  $maybesudo ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
     || fail "could not install Homebrew"
   log "Hombrew installed."
 fi
 
 log "Installing Brew formulae..."
-$maybesudo brew install $(cat "brew-formulae.txt") \
+brew install $(cat "brew-formulae.txt") \
   || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
 log "Brew formulae installed."
 
