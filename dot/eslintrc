@@ -10,6 +10,7 @@
     jsx: true
   # jsx for 2.x
   parserOptions:
+    ecmaVersion: 6
     ecmaFeatures:
       jsx: true
   globals:
