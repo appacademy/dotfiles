@@ -23,7 +23,7 @@ global:
     showErrorPanel: false
     showErrorTabProject: false
   "linter-eslint":
-    globalNodePath: "/Users/appacademy/.nvm/versions/node/v4.4.3"
+    globalNodePath: "/Users/appacademy/.nvm/versions/node/v6.2.1"
     useGlobalEslint: true
   "linter-rubocop":
     executablePath: "/Users/appacademy/.rbenv/shims/rubocop"

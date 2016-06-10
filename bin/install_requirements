@@ -74,10 +74,10 @@ cd "$requirements_dir"
 log "NVM Activated."
 
 log "Installing Node..."
-if nvm ls "4.4.3" > /dev/null; then
+if nvm ls "6.2.1" > /dev/null; then
   log "Node already installed."
 else
-  nvm install v4.4.3 || fail "could not install Node"
+  nvm install v6.2.1 || fail "could not install Node"
   log "Node Installed."
 fi
 
