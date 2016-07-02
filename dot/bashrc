@@ -12,10 +12,10 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
 # dotfiles repo
-export DOTFILES="$( cd "$( dirname "$( readlink ~/.bashrc )" )/.." && pwd )"
+export AA_CONFIG_DIR="$(cat $HOME/.aa_config_dir)"
 
 # shortened prompt that includes git branch info
-source "$DOTFILES/git-prompt.sh"
+source "$AA_CONFIG_DIR/git-prompt.sh"
 export PS1="$RED\w$WHITE$(__git_ps1)$RED\$$RESET "
 
 # update bash history after every command instead of waiting until the
@@ -32,18 +32,7 @@ export EDITOR="vim"
 ### git ###
 
 # setup git completion
-source "$DOTFILES/git-completion.bash"
-
-# make `g` behave like `git status` with no args, or `git` with args
-g () {
-  if [ $# -eq 0 ]
-  then
-    git status
-  else
-    git "$@"
-  fi
-}
-__git_complete g _git
+source "$AA_CONFIG_DIR/git-completion.bash"
 
 ### other ###
 
@@ -55,7 +44,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Load aliases
-source "$DOTFILES/aliases"
+source "$AA_CONFIG_DIR/aliases"
 
 # Load any local configuration
-[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local
+[[ -f "$HOME/.profile" ]] && source "$HOME/.profile"

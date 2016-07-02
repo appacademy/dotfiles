@@ -1,18 +1,28 @@
 #!/bin/bash
 
-repo="$( cd "$( dirname "$0" )/.." && pwd )"
-dot="$repo/dot"
+REPO="$( cd "$( dirname "$0" )/.." && pwd )"
+DOT="$REPO/dot"
 
-ln -sf "$dot/bash_profile" ~/.bash_profile
-ln -sf "$dot/bashrc" ~/.bashrc
-ln -sf "$dot/eslintrc" ~/.eslintrc
-ln -sf "$dot/gemrc" ~/.gemrc
-ln -sf "$dot/gitconfig" ~/.gitconfig
-ln -sf "$dot/gitignore" ~/.gitignore
-ln -sf "$dot/pryrc" ~/.pryrc
-ln -sf "$dot/railsrc" ~/.railsrc
-ln -sf "$dot/rspec" ~/.rspec
-ln -sf "$dot/rubocop.yml" ~/.rubocop.yml
-ln -sf "$dot/sqliterc" ~/.sqliterc
+copy_if_different() {
+  source="$DOT/$1"
+  target="$HOME/.$1"
+  mkdir -p "$(dirname "$target")"
+  if [[ ! -f "$target" ]] || [[ -n "$(diff "$source" "$target")" ]]; then
+    cp -i "$source" "$target"
+  fi
+}
 
-cp "$dot/atom/config.cson" ~/.atom/config.cson
+echo "$DOT" > "$HOME/.aa_config_dir"
+
+copy_if_different "bash_profile"
+copy_if_different "bashrc"
+copy_if_different "eslintrc"
+copy_if_different "gemrc"
+copy_if_different "gitconfig"
+copy_if_different "gitignore"
+copy_if_different "pryrc"
+copy_if_different "railsrc"
+copy_if_different "rspec"
+copy_if_different "rubocop.yml"
+copy_if_different "sqliterc"
+copy_if_different "atom/config.cson"
