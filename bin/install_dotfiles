@@ -3,14 +3,6 @@ require 'erb'
 
 REPO = File.absolute_path("#{File.dirname(__FILE__)}/..").freeze
 HOME = ENV['HOME']
-DIFF_WARNING = <<WARNING.freeze
-#{File.basename(__FILE__)} will overwrite the following config files, \
-making these changes. If you want to save any of your current \
-configuration, please do so before continuing.
-
-(Note: You can add custom bash configuration to `#{HOME}/.profile` and \
-it will be automatically loaded.)
-WARNING
 
 FILES = [
   "aliases",
@@ -47,6 +39,10 @@ class Dotfile
     @diffed = false
   end
 
+  def text
+    @text ||= ERB.new(File.read(source_path)).result(binding)
+  end
+
   def diff
     @diff ||= compile_diff
   end
@@ -68,12 +64,10 @@ class Dotfile
     "#{HOME}/.#{name}"
   end
 
+  private
+
   def compiled_path
     "#{File.dirname(source_path)}/.diff_#{File.basename(source_path)}"
-  end
-
-  def text
-    @text ||= ERB.new(File.read(source_path)).result
   end
 
   def compile_diff
@@ -149,5 +143,14 @@ def diff_warning(changed_dotfiles)
   end
   "#{DIFF_WARNING}\n#{diffs.join("\n\n")}"
 end
+
+DIFF_WARNING = <<WARNING.freeze
+#{File.basename(__FILE__)} will overwrite the following config files, \
+making these changes. If you want to save any of your current \
+configuration, please do so before continuing.
+
+(Note: You can add custom bash configuration to `#{HOME}/.profile` and \
+it will be automatically loaded.)
+WARNING
 
 main if __FILE__ == $PROGRAM_NAME
