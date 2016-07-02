@@ -1,7 +1,11 @@
 # App Academy Dotfiles
 
 This is the one repo you need to set up your Mac for App Academy. It
-automates the setup process to make your life easier.
+combines configuration files and installation scripts to automate the setup process and make your life easier.
+
+We've selected some simple configuration settings that will get you set
+up and ready to develop. You can tweak these as you learn more and
+develop your own configuration preferences.
 
 ## Preparing your machine for Dotfiles.
 
