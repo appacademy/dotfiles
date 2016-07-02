@@ -37,6 +37,7 @@ class Dotfile
   end
 
   def self.remove_broken_symlinks
+    # clean up old symlinks from previous architecture
     `find -L "#{HOME}" -maxdepth 1 -type l -exec rm {} +`
   end
 
@@ -111,7 +112,7 @@ class GitConfig
   end
 end
 
-def install_dotfiles
+def main
   GitConfig.fetch_user_info
 
   dotfiles = FILES.map do |name|
@@ -121,11 +122,17 @@ def install_dotfiles
   changed = dotfiles.select(&:changed?)
 
   if changed.empty? || user_consents?(changed)
-    dotfiles.each(&:install)
-    puts "Dotfiles successfully installed!"
+    install_dotfiles(dotfiles)
   else
     puts "Dotfiles installation cancelled."
   end
+end
+
+def install_dotfiles(dotfiles)
+  dotfiles.each(&:install)
+  Dotfile.record_aa_config_dir
+  Dotfile.remove_broken_symlinks
+  puts "Dotfiles successfully installed!"
 end
 
 def user_consents?(changed_dotfiles)
@@ -142,4 +149,4 @@ def diff_warning(changed_dotfiles)
   "#{DIFF_WARNING}\n#{diffs.join("\n\n")}"
 end
 
-install_dotfiles if __FILE__ == $PROGRAM_NAME
+main if __FILE__ == $PROGRAM_NAME

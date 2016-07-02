@@ -1,3 +1,5 @@
+AA_CONFIG_DIR="$(cat $HOME/.aa_config_dir)"
+
 ### load extenstions ###
 
 source "$AA_CONFIG_DIR/git-completion.bash"
@@ -10,9 +12,6 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
-
-# save aa config path
-export AA_CONFIG_DIR="$(cat $HOME/.aa_config_dir)"
 
 # make vim the default text editor
 export EDITOR="vim"
