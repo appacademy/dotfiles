@@ -1,33 +1,17 @@
 [alias]
-    a = add
-    aa = add --all
-    alias = config --get-regexp ^alias\\.
-    b = branch
-    check = diff --staged
-    ci = commit
-    co = checkout
-    d = diff --ignore-space-change
-    fix = commit --amend
-    l = log --pretty=format:\"%C(green)%h%C(reset) %C(blue)%ad%C(reset) %s%C(yellow)%d%C(reset) %C(blue)[%an]%C(reset)\" --graph --date=short
-    last = log -n 1 --pretty=\"%H\"
-    s = status
-    r = remote
-[branch]
-    autosetuprebase = always
+	a = add
+	aa = add --all
+	alias = config --get-regexp ^alias\\.
+	b = branch
+	ci = commit
+	co = checkout
+	d = diff --ignore-space-change
+	l = log --pretty=format:\"%C(green)%h%C(reset) %C(blue)%ad%C(reset) %s%C(yellow)%d%C(reset) %C(blue)[%an]%C(reset)\" --graph --date=short
+	s = status
+	r = remote
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    grep = auto
+	ui = true
 [core]
-    editor = vim
-    excludesfile = ~/.gitignore
-[credential]
-    helper = cache --timeout 0
+	excludesfile = ~/.gitignore
 [push]
-    default = upstream
-[rerere]
-    enabled = 1
-[user]
-    email = student@appacademy.io
-    name = App Academy Student
+	default = simple
