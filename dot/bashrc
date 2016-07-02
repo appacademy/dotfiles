@@ -1,7 +1,7 @@
-# color constants
-RED='\[\e[0;31m\]'
-WHITE='\[\e[1;37m\]'
-RESET='\[\e[0m\]'
+### load extenstions ###
+
+source "$AA_CONFIG_DIR/git-completion.bash"
+source "$AA_CONFIG_DIR/git-prompt.sh"
 
 ### ENV variables ###
 
@@ -11,28 +11,17 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 
-# dotfiles repo
+# save aa config path
 export AA_CONFIG_DIR="$(cat $HOME/.aa_config_dir)"
-
-# shortened prompt that includes git branch info
-source "$AA_CONFIG_DIR/git-prompt.sh"
-export PS1="$RED\w$WHITE$(__git_ps1)$RED\$$RESET "
-
-# update bash history after every command instead of waiting until the
-# shell is closed
-export PROMPT_COMMAND="history -a"
-
-# expand bash history buffer
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
 
 # make vim the default text editor
 export EDITOR="vim"
 
-### git ###
-
-# setup git completion
-source "$AA_CONFIG_DIR/git-completion.bash"
+# shortened prompt that includes git branch info
+RED='\[\e[0;31m\]'
+WHITE='\[\e[1;37m\]'
+RESET='\[\e[0m\]'
+export PS1="$RED\w$WHITE$(__git_ps1)$RED\$$RESET "
 
 ### other ###
 
@@ -41,10 +30,10 @@ eval "$(rbenv init -)"
 
 # initialize node version manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
-# Load aliases
+# load aliases
 source "$AA_CONFIG_DIR/aliases"
 
-# Load any local configuration
+# load any local configuration
 [[ -f "$HOME/.profile" ]] && source "$HOME/.profile"
