@@ -13,14 +13,6 @@ fail() {
   exit 1
 }
 
-install_git_completion() {
-  git_version="$(git --version | sed 's/git version //')"
-  git_url="https://raw.githubusercontent.com/git/git/v${git_version}/contrib/completion"
-
-  curl "$git_url/.git-completion.bash" > "$HOME/.git-completion.bash"
-  curl "$git_url/.git-prompt.sh" > "$HOME/.git-prompt.sh"
-}
-
 cd "$( dirname "$0" )/../requirements"
 requirements_dir="$( pwd )"
 
@@ -41,8 +33,11 @@ brew install $(cat "brew-formulae.txt") \
 log "Brew formulae installed."
 
 log "Installing Git completion..."
-install_git_completion
-log "Git completion installed."
+git_version="$(git --version | sed 's/git version //')"
+git_url="https://raw.githubusercontent.com/git/git/v${git_version}/contrib/completion"
+curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
+curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
+log "Git completion v$git_version installed."
 
 if which rvm > /dev/null; then
   log "rvm detected. Imploding..."
@@ -62,7 +57,8 @@ else
 fi
 
 log "Installing Ruby gems..."
-gem which bundler || gem install bundler
+rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
+gem install bundler
 rbenv rehash
 bundle install
 rbenv rehash

@@ -5,6 +5,7 @@ REPO = File.absolute_path("#{File.dirname(__FILE__)}/..").freeze
 HOME = ENV['HOME']
 
 FILES = [
+  "atom/config.cson",
   "aliases",
   "bash_profile",
   "bashrc",
@@ -16,8 +17,7 @@ FILES = [
   "railsrc",
   "rspec",
   "rubocop.yml",
-  "sqliterc",
-  "atom/config.cson"
+  "sqliterc"
 ].freeze
 
 class Dotfile
@@ -139,7 +139,7 @@ end
 def diff_warning(changed_dotfiles)
   diffs = changed_dotfiles.map do |dotfile|
     title = dotfile.target_path
-    "#{title}:\n#{'-' * title.length}\n#{dotfile.diff}"
+    "#{title}\n#{'=' * title.length}\n#{dotfile.diff}"
   end
   "#{DIFF_WARNING}\n#{diffs.join("\n\n")}"
 end

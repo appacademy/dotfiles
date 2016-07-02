@@ -1,7 +1,7 @@
 ### load extenstions ###
 
-source "$HOME/git-completion.bash"
-source "$HOME/git-prompt.sh"
+source "$HOME/.git-completion.bash"
+source "$HOME/.git-prompt.sh"
 
 ### ENV variables ###
 
@@ -30,7 +30,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 # load aliases
-[[ -f "$HOME/.aliases" ]] && source "$HOME/aliases"
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # load any local configuration
 [[ -f "$HOME/.profile" ]] && source "$HOME/.profile"
