@@ -3,26 +3,51 @@
 REPO="$( cd "$( dirname "$0" )/.." && pwd )"
 DOT="$REPO/dot"
 
-copy_if_different() {
+install_dotfile() {
   source="$DOT/$1"
   target="$HOME/.$1"
-  mkdir -p "$(dirname "$target")"
+
+  ensure_parent_dir "$target"
+  remove_old_symlink "$target"
+  copy_if_different "$source" "$target"
+}
+
+ensure_parent_dir() {
+  mkdir -p "$(dirname "$1")"
+}
+
+remove_old_symlink() {
+  # cleans up old a/A dotfiles architecture
+  find "$1" -type l -delete
+}
+
+remove_broken_dotfiles_symlinks() {
+  # cleans up old a/A dotfiles architecture
+  find -L "$HOME" -maxdepth 1 -type l -exec rm {} +
+}
+
+copy_if_different() {
+  source="$1"
+  target="$2"
   if [[ ! -f "$target" ]] || [[ -n "$(diff "$source" "$target")" ]]; then
     cp -i "$source" "$target"
   fi
 }
 
+
 echo "$DOT" > "$HOME/.aa_config_dir"
 
-copy_if_different "bash_profile"
-copy_if_different "bashrc"
-copy_if_different "eslintrc"
-copy_if_different "gemrc"
-copy_if_different "gitconfig"
-copy_if_different "gitignore"
-copy_if_different "pryrc"
-copy_if_different "railsrc"
-copy_if_different "rspec"
-copy_if_different "rubocop.yml"
-copy_if_different "sqliterc"
-copy_if_different "atom/config.cson"
+install_dotfile "bash_profile"
+install_dotfile "bashrc"
+install_dotfile "eslintrc"
+install_dotfile "gemrc"
+install_dotfile "gitconfig"
+install_dotfile "gitignore"
+install_dotfile "pryrc"
+install_dotfile "railsrc"
+install_dotfile "rspec"
+install_dotfile "rubocop.yml"
+install_dotfile "sqliterc"
+install_dotfile "atom/config.cson"
+
+remove_broken_dotfiles_symlinks
