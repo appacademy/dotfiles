@@ -13,6 +13,14 @@ fail() {
   exit 1
 }
 
+install_git_completion() {
+  git_version="$(git --version | sed 's/git version //')"
+  git_url="https://raw.githubusercontent.com/git/git/v${git_version}/contrib/completion"
+
+  curl "$git_url/.git-completion.bash" > "$HOME/.git-completion.bash"
+  curl "$git_url/.git-prompt.sh" > "$HOME/.git-prompt.sh"
+}
+
 cd "$( dirname "$0" )/../requirements"
 requirements_dir="$( pwd )"
 
@@ -31,6 +39,10 @@ log "Installing Brew formulae..."
 brew install $(cat "brew-formulae.txt") \
   || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
 log "Brew formulae installed."
+
+log "Installing Git completion..."
+install_git_completion
+log "Git completion installed."
 
 if which rvm > /dev/null; then
   log "rvm detected. Imploding..."

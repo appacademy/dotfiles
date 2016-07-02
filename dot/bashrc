@@ -2,8 +2,8 @@ AA_CONFIG_DIR="$(cat $HOME/.aa_config_dir)"
 
 ### load extenstions ###
 
-source "$AA_CONFIG_DIR/git-completion.bash"
-source "$AA_CONFIG_DIR/git-prompt.sh"
+source "$HOME/git-completion.bash"
+source "$HOME/git-prompt.sh"
 
 ### ENV variables ###
 
