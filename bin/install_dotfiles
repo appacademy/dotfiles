@@ -13,6 +13,7 @@ it will be automatically loaded.)
 WARNING
 
 FILES = [
+  "aliases",
   "bash_profile",
   "bashrc",
   "eslintrc",
