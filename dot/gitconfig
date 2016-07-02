@@ -1,6 +1,6 @@
 [alias]
 	a = add
-	aa = add --all
+	aa = add --all :/
 	alias = config --get-regexp ^alias\\.
 	b = branch
 	ci = commit
@@ -15,3 +15,6 @@
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
+[user]
+	name = <%= GitConfig.user_name %>
+	email = <%= GitConfig.user_email %>

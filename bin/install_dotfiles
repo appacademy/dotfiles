@@ -76,13 +76,9 @@ class Dotfile
 
   def compile_diff
     File.write(compiled_path, text)
-    diff = `diff #{target_path} #{compiled_path} 2>/dev/null`
+    diff = `diff #{target_path} #{compiled_path} 2>/dev/null`.chomp
     File.delete(compiled_path)
-    diff || ''
-  end
-
-  def remove_symlink
-    `[[ -L #{target} ]] && rm #{target}`
+    diff
   end
 
   def ensure_parent_dir
@@ -91,9 +87,12 @@ class Dotfile
 end
 
 class GitConfig
+  class << self
+    attr_reader :user_name, :user_email
+  end
 
   def self.[](key)
-    result = `git config --global #{key}`
+    result = `git config --global #{key}`.chomp
     result = nil if result.empty?
     result
   end
@@ -102,14 +101,9 @@ class GitConfig
     `git config --global #{key} "#{value}"`
   end
 
-  def self.cache_user_info
-    @git_name = self['user.name']
-    @git_email = self['user.email']
-  end
-
-  def self.restore_user_info
-    self['user.name'] = @git_name if @git_name
-    self['user.email'] = @git_email if @git_email
+  def self.fetch_user_info
+    @user_name = self['user.name']
+    @user_email = self['user.email']
   end
 
   def initialize
@@ -118,7 +112,7 @@ class GitConfig
 end
 
 def install_dotfiles
-  GitConfig.cache_user_info
+  GitConfig.fetch_user_info
 
   dotfiles = FILES.map do |name|
     Dotfile.new(name)
@@ -128,7 +122,6 @@ def install_dotfiles
 
   if changed.empty? || user_consents?(changed)
     dotfiles.each(&:install)
-    GitConfig.restore_user_info
     puts "Dotfiles successfully installed!"
   else
     puts "Dotfiles installation cancelled."
@@ -137,7 +130,7 @@ end
 
 def user_consents?(changed_dotfiles)
   puts diff_warning(changed_dotfiles)
-  puts "\nContinue? (y/n)"
+  puts "\n\nContinue? (y/n)"
   gets.downcase.include?('y')
 end
 
@@ -146,7 +139,7 @@ def diff_warning(changed_dotfiles)
     title = dotfile.target_path
     "#{title}:\n#{'-' * title.length}\n#{dotfile.diff}"
   end
-  "#{DIFF_WARNING}\n#{diffs.join("\n")}"
+  "#{DIFF_WARNING}\n#{diffs.join("\n\n")}"
 end
 
 install_dotfiles if __FILE__ == $PROGRAM_NAME
