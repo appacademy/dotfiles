@@ -3,4 +3,3 @@ git
 heroku
 qt
 rbenv
-vim
