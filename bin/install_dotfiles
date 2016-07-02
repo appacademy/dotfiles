@@ -1,66 +1,152 @@
-#!/bin/bash
+#!/usr/bin/env ruby
+require 'erb'
 
-REPO="$( cd "$( dirname "$0" )/.." && pwd )"
-DOT="$REPO/dot"
+REPO = File.absolute_path("#{File.dirname(__FILE__)}/..").freeze
+HOME = ENV['HOME']
+DIFF_WARNING = <<WARNING.freeze
+#{File.basename(__FILE__)} will overwrite the following config files, \
+making these changes. If you want to save any of your current \
+configuration, please do so before continuing.
 
-install_dotfile() {
-  source="$DOT/$1"
-  target="$HOME/.$1"
+(Note: You can add custom bash configuration to `#{HOME}/.profile` and \
+it will be automatically loaded.)
+WARNING
 
-  ensure_parent_dir "$target"
-  remove_old_symlink "$target"
-  copy_if_different "$source" "$target"
-}
+FILES = [
+  "bash_profile",
+  "bashrc",
+  "eslintrc",
+  "gemrc",
+  "gitconfig",
+  "gitignore",
+  "pryrc",
+  "railsrc",
+  "rspec",
+  "rubocop.yml",
+  "sqliterc",
+  "atom/config.cson"
+].freeze
 
-ensure_parent_dir() {
-  mkdir -p "$(dirname "$1")"
-}
+class Dotfile
+  DIR = "#{REPO}/dot".freeze
 
-remove_old_symlink() {
-  # cleans up old a/A dotfiles architecture
-  find "$1" -type l -delete
-}
+  attr_reader :name
 
-remove_broken_dotfiles_symlinks() {
-  # cleans up old a/A dotfiles architecture
-  find -L "$HOME" -maxdepth 1 -type l -exec rm {} +
-}
+  def self.record_aa_config_dir
+    File.write("#{HOME}/.aa_config_dir", DIR)
+  end
 
-copy_if_different() {
-  source="$1"
-  target="$2"
-  if [[ ! -f "$target" ]] || [[ -n "$(diff "$source" "$target")" ]]; then
-    cp -i "$source" "$target"
-  fi
-}
+  def self.remove_broken_symlinks
+    `find -L "#{HOME}" -maxdepth 1 -type l -exec rm {} +`
+  end
 
-get_git_user_info() {
-  git_name="$(git config --global user.name)"
-  git_email="$(git config --global user.email)"
-}
+  def initialize(name)
+    @name = name
+    @diffed = false
+  end
 
-save_git_user_info() {
-  [[ -n "$git_name" ]] && git config --global user.name "$git_name"
-  [[ -n "$git_email" ]] && git config --global user.email "$git_email"
-}
+  def diff
+    @diff ||= compile_diff
+  end
 
-get_git_user_info
+  def changed?
+    !diff.empty?
+  end
 
-echo "$DOT" > "$HOME/.aa_config_dir"
+  def install
+    ensure_parent_dir
+    File.write(target_path, text)
+  end
 
-install_dotfile "bash_profile"
-install_dotfile "bashrc"
-install_dotfile "eslintrc"
-install_dotfile "gemrc"
-install_dotfile "gitconfig"
-install_dotfile "gitignore"
-install_dotfile "pryrc"
-install_dotfile "railsrc"
-install_dotfile "rspec"
-install_dotfile "rubocop.yml"
-install_dotfile "sqliterc"
-install_dotfile "atom/config.cson"
+  def source_path
+    "#{DIR}/#{name}"
+  end
 
-remove_broken_dotfiles_symlinks
+  def target_path
+    "#{HOME}/.#{name}"
+  end
 
-save_git_user_info
+  def compiled_path
+    "#{File.dirname(source_path)}/.diff_#{File.basename(source_path)}"
+  end
+
+  def text
+    @text ||= ERB.new(File.read(source_path)).result
+  end
+
+  def compile_diff
+    File.write(compiled_path, text)
+    diff = `diff #{target_path} #{compiled_path} 2>/dev/null`
+    File.delete(compiled_path)
+    diff || ''
+  end
+
+  def remove_symlink
+    `[[ -L #{target} ]] && rm #{target}`
+  end
+
+  def ensure_parent_dir
+    `mkdir -p "$(dirname "#{target_path}")"`
+  end
+end
+
+class GitConfig
+
+  def self.[](key)
+    result = `git config --global #{key}`
+    result = nil if result.empty?
+    result
+  end
+
+  def self.[]=(key, value)
+    `git config --global #{key} "#{value}"`
+  end
+
+  def self.cache_user_info
+    @git_name = self['user.name']
+    @git_email = self['user.email']
+  end
+
+  def self.restore_user_info
+    self['user.name'] = @git_name if @git_name
+    self['user.email'] = @git_email if @git_email
+  end
+
+  def initialize
+    raise NotImplementedError, "class not meant to be instantiated"
+  end
+end
+
+def install_dotfiles
+  GitConfig.cache_user_info
+
+  dotfiles = FILES.map do |name|
+    Dotfile.new(name)
+  end
+
+  changed = dotfiles.select(&:changed?)
+
+  if changed.empty? || user_consents?(changed)
+    dotfiles.each(&:install)
+    GitConfig.restore_user_info
+    puts "Dotfiles successfully installed!"
+  else
+    puts "Dotfiles installation cancelled."
+  end
+end
+
+def user_consents?(changed_dotfiles)
+  puts diff_warning(changed_dotfiles)
+  puts "\nContinue? (y/n)"
+  gets.downcase.include?('y')
+end
+
+def diff_warning(changed_dotfiles)
+  diffs = changed_dotfiles.map do |dotfile|
+    title = dotfile.target_path
+    "#{title}:\n#{'-' * title.length}\n#{dotfile.diff}"
+  end
+  "#{DIFF_WARNING}\n#{diffs.join("\n")}"
+end
+
+install_dotfiles if __FILE__ == $PROGRAM_NAME
