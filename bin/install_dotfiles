@@ -34,6 +34,17 @@ copy_if_different() {
   fi
 }
 
+get_git_user_info() {
+  git_name="$(git config --global user.name)"
+  git_email="$(git config --global user.email)"
+}
+
+save_git_user_info() {
+  [[ -n "$git_name" ]] && git config --global user.name "$git_name"
+  [[ -n "$git_email" ]] && git config --global user.email "$git_email"
+}
+
+get_git_user_info
 
 echo "$DOT" > "$HOME/.aa_config_dir"
 
@@ -51,3 +62,5 @@ install_dotfile "sqliterc"
 install_dotfile "atom/config.cson"
 
 remove_broken_dotfiles_symlinks
+
+save_git_user_info
