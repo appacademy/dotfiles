@@ -55,7 +55,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Load aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+source "$DOTFILES/aliases"
 
-# Load local configuration
+# Load any local configuration
 [[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

@@ -1,10 +1,4 @@
-alias ..="cd .."
-alias a="atom"
-alias be="bundle exec"
-alias e="emacs"
-alias l='ls'
+alias sl="ls"
 alias ls="ls -G"
-alias v="vim"
-
-# Load local aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+alias irb="pry"
+alias be="bundle exec"
