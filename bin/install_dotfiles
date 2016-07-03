@@ -72,7 +72,11 @@ class Dotfile
 
   def compile_diff
     File.write(compiled_path, text)
-    diff = `diff #{target_path} #{compiled_path} 2>/dev/null`.chomp
+    diff = `diff -B \
+      --unchanged-line-format= \
+      --new-line-format= \
+      --old-line-format='%L' \
+      #{target_path} #{compiled_path} 2>/dev/null`.chomp
     File.delete(compiled_path)
     diff
   end
@@ -145,9 +149,10 @@ def diff_warning(changed_dotfiles)
 end
 
 DIFF_WARNING = <<WARNING.freeze
-#{File.basename(__FILE__)} will overwrite the following config files, \
-making these changes. If you want to save any of your current \
-configuration, please do so before continuing.
+#{File.basename(__FILE__)} will modify the following config files, \
+overwriting these lines. If you want to keep any of this \
+configuration, please backup these files before continuing. You can \
+merge in your changes afterward.
 
 (Note: You can add custom bash configuration to `#{HOME}/.profile` and \
 it will be automatically loaded.)
