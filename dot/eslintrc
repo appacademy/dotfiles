@@ -5,20 +5,11 @@
     jquery: true
     mocha: true
     jasmine: true
-  # jsx for 1.x
-  ecmaFeatures:
-    jsx: true
-  # jsx for 2.x
   parserOptions:
     ecmaVersion: 6
+    sourceType: module
     ecmaFeatures:
       jsx: true
-  globals:
-    _: false
-    EventEmitter: false
-    Flux: false
-    React: false
-    ReactRouter: false
   rules:
     camelcase:
       - 1
