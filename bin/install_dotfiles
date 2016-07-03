@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 require 'erb'
 
-REPO = File.absolute_path("#{File.dirname(__FILE__)}/..").freeze
+REPO = File.expand_path("../..", __FILE__)
+exit
+
 HOME = ENV['HOME']
 
 FILES = [
@@ -21,12 +23,12 @@ FILES = [
 ].freeze
 
 class Dotfile
-  DIR = "#{REPO}/dot".freeze
+  DIR = File.join(REPO, "dot")
 
   attr_reader :name
 
   def self.record_aa_config_dir
-    File.write("#{HOME}/.aa_config_dir", DIR)
+    File.write(File.join(HOME, ".aa_config_dir"), DIR)
   end
 
   def self.remove_broken_symlinks
@@ -57,17 +59,17 @@ class Dotfile
   end
 
   def source_path
-    "#{DIR}/#{name}"
+    File.join(DIR, name)
   end
 
   def target_path
-    "#{HOME}/.#{name}"
+    File.join(HOME, ".#{name}")
   end
 
   private
 
   def compiled_path
-    "#{File.dirname(source_path)}/.diff_#{File.basename(source_path)}"
+    File.expand_path("../.diff_#{File.basename(source_path)}", source_path)
   end
 
   def compile_diff
