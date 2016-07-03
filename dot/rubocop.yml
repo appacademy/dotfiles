@@ -19,9 +19,6 @@ AllCops:
     - '**/Rakefile'
   Exclude:
     - 'vendor/**'
-  # By default, the rails cops are not run. Override in project or home
-  # directory .rubocop.yml files, or by giving the -R/--rails option.
-  RunRailsCops: false
 
 # Indent private/protected/public as deep as method definitions
 AccessModifierIndentation:
@@ -264,8 +261,8 @@ MethodName:
     - snake_case
     - camelCase
 
-NumericLiterals:
-  MinDigits: 5
+Style/NumericLiterals:
+  MinDigits: 6
 
 ParameterLists:
   Max: 5
@@ -335,7 +332,7 @@ SingleLineMethods:
   AllowIfMethodIsEmpty: true
 
 StringLiterals:
-  EnforcedStyle: single_quotes
+  Enabled: false
   SupportedStyles:
     - single_quotes
     - double_quotes
@@ -363,11 +360,19 @@ SpaceInsideBlockBraces:
   SpaceBeforeBlockParameters: true
 
 SpaceInsideHashLiteralBraces:
-  EnforcedStyle: space
   EnforcedStyleForEmptyBraces: no_space
   SupportedStyles:
     - space
     - no_space
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
 
 TrailingBlankLines:
   EnforcedStyle: final_newline
@@ -375,8 +380,14 @@ TrailingBlankLines:
     - final_newline
     - final_blank_line
 
-TrailingComma:
-  EnforcedStyleForMultiline: no_comma
+TrailingCommaInLiteral:
+  EnforcedStyleForSingleline: no_comma
+  SupportedStyles:
+    - comma
+    - no_comma
+
+TrailingCommaInArguments:
+  EnforcedStyleForSingleline: no_comma
   SupportedStyles:
     - comma
     - no_comma
@@ -436,10 +447,6 @@ ActionFilter:
   Include:
     - app/controllers/*.rb
 
-DefaultScope:
-  Include:
-    - app/models/*.rb
-
 HasAndBelongsToMany:
   Include:
     - app/models/*.rb
@@ -459,7 +466,3 @@ Validation:
 RedundantSelf:
   Description: "Don't use self where it's not needed."
   Enabled: false
-   
-    
-StringLiterals:
-  Enabled: false 
