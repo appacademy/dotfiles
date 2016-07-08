@@ -1,4 +1,7 @@
 #!/bin/bash
+RUBY_VERSION='2.3.1'
+NODE_VERSION='6.2.1'
+
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
@@ -47,13 +50,13 @@ fi
 
 log "Installing Ruby..."
 eval "$(rbenv init -)" || fail "could not activate rbenv"
-if rbenv global 2.3.1; then
-  log "Ruby already installed"
+if rbenv global "$RUBY_VERSION"; then
+  log "Ruby v$RUBY_VERSION already installed"
 else
-  rbenv install 2.3.1
-  rbenv global 2.3.1
+  rbenv install "$RUBY_VERSION"
+  rbenv global "$RUBY_VERSION"
   rbenv rehash
-  log "Ruby installed."
+  log "Ruby v$RUBY_VERSION installed."
 fi
 
 log "Installing Ruby gems..."
@@ -82,11 +85,12 @@ cd "$requirements_dir"
 log "NVM Activated."
 
 log "Installing Node..."
-if nvm ls "6.2.1" > /dev/null; then
-  log "Node already installed."
+if nvm ls "$NODE_VERSION" > /dev/null; then
+  log "Node v$NODE_VERSION already installed."
 else
-  nvm install v6.2.1 || fail "could not install Node"
-  log "Node Installed."
+  nvm install "$NODE_VERSION" || fail "could not install Node"
+  nvm alias default "$NODE_VERSION"
+  log "Node v$NODE_VERSION Installed."
 fi
 
 log "Installing node packages..."
