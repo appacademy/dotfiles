@@ -2,7 +2,6 @@
 require 'erb'
 
 REPO = File.expand_path("../..", __FILE__)
-exit
 
 HOME = ENV['HOME']
 
