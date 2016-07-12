@@ -68,15 +68,15 @@ rbenv rehash
 log "Gems installed."
 
 log "Installing NVM..."
-if [[ -z "$NVM_DIR" ]]; then
-  git clone https://github.com/creationix/nvm.git ~/.nvm \
-    && cd ~/.nvm \
+[[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
+if [[ -d "$NVM_DIR" ]]; then
+  log "NVM already installed."
+else
+  git clone https://github.com/creationix/nvm.git "$NVM_DIR" \
+    && cd "$NVM_DIR" \
     && git checkout `git describe --abbrev=0 --tags` \
     || fail "could not install NVM"
-  export NVM_DIR="$( pwd )"
   log "NVM installed."
-else
-  log "NVM already installed."
 fi
 log "Activating NVM..."
 cd "$NVM_DIR"
