@@ -36,11 +36,10 @@ brew install $(cat "brew-formulae.txt") \
 log "Brew formulae installed."
 
 log "Installing Git completion..."
-git_version="$(git --version | sed 's/git version //')"
-git_url="https://raw.githubusercontent.com/git/git/v${git_version}/contrib/completion"
+git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
 curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
-log "Git completion v$git_version installed."
+log "Git completion installed."
 
 if which rvm > /dev/null; then
   log "rvm detected. Imploding..."
@@ -53,6 +52,10 @@ eval "$(rbenv init -)" || fail "could not activate rbenv"
 if rbenv global "$RUBY_VERSION"; then
   log "Ruby v$RUBY_VERSION already installed"
 else
+  log "Upgrading rbenv..."
+  brew upgrade rbenv ruby-build
+
+  log "Installing Ruby v$RUBY_VERSION..."
   rbenv install "$RUBY_VERSION"
   rbenv global "$RUBY_VERSION"
   rbenv rehash
