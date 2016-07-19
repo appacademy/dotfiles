@@ -61,8 +61,7 @@ git clone https://github.com/appacademy/dotfiles.git .dotfiles
 ### Install the requirements.
 
 This will install all the requirements, including Ruby and Node, various
-Gems and Node packages, and some Atom packages. If you are having trouble
-with the script below, follow [these instructions.]
+Gems and Node packages, and some Atom packages. If you are having trouble with the script below, follow [these instructions](https://github.com/jordvnkm/dotfiles/tree/consolidation/bin) to manually get things set up.
 
 ```
 ~/.dotfiles/bin/install_requirements
