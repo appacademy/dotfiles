@@ -133,3 +133,13 @@ Atom is the text editor that is used here at App academy. To install the necessa
 ```
 apm install --packages-files "atom-packages.txt"
 ```
+
+# Bashrc
+.bashrc is a shell script that Bash runs whenever it is started.  You can put any command into this script file that you can type into the command prompt. People mainly put commands in this file to set up a particular environment or to customize things to your preferences.  You can manually run the bashrc file provided by app academy by navigating to dotfiles/dot running command:
+```
+source ./bashrc
+```
+
+
+# Atom Packages
+Atom packages are plugins for the Atom text editor.  Many of these plugins help with finding syntax errors or set development preferences, such as using the VIM commands.  Take a look through the atom packages available by opening atom and pressing 'command + ,'
