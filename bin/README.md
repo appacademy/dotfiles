@@ -142,4 +142,4 @@ source ./bashrc
 
 
 # Atom Packages
-Atom packages are plugins for the Atom text editor.  Many of these plugins help with finding syntax errors or set development preferences, such as using the VIM commands.  Take a look through the atom packages available by opening atom and pressing 'command + ,'
+Atom packages are plugins for the Atom text editor.  Many of these plugins help with finding syntax errors or set development preferences, such as using the VIM commands.  Take a look through the atom packages available by opening atom, clicking Atom => preferences => packages .
