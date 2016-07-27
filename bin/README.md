@@ -22,10 +22,11 @@ brew update
 ### Installing brew formulae
 
 Run the following commands:
+
 ```
 brew install ag
 ```
-This will install a code searching tool
+This is an optional step. This will install a code searching tool (the silver searcher)
 
 ```
 brew install git
@@ -47,8 +48,8 @@ brew install rbenv
 ```
 This will install rbenv, a tool for managing ruby versions
 
-### Installing git complete
-Git complete is an autocomplete tool for git branches and commands.  To install git complete run
+### Installing git completion
+Git complete is an autocomplete tool for git branches and commands.  This step is optional, though you will have to delete the git completion line from your bashrc file if you decide skip this section. To install git complete run
 ```
 git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
