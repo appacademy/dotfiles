@@ -130,8 +130,14 @@ npm install -g $(cat "node-packages.txt")
 ```
 
 ### Installing Atom packages
-Atom is the text editor that is used here at App academy. Atom packages are plugins for the Atom text editor.  Many of these plugins help with finding syntax errors or set development preferences, such as using the VIM commands.  Take a look through the atom packages available by opening atom, clicking Atom => preferences => packages .
+
+Atom is the text editor that is used here at App academy. Atom packages
+are plugins for the Atom text editor. Take a look through the atom
+packages available by opening atom, clicking Atom => preferences =>
+packages .
+
 To install the necessary Atom packages for this course run
+
 ```
 apm install --packages-files "atom-packages.txt"
 ```
