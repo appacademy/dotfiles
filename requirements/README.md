@@ -31,7 +31,7 @@ This is an optional step. This will install a code searching tool (the silver se
 ```
 brew install git
 ```
-This will install git, a version control tool
+This will install Git, a version control tool
 
 ```
 brew install heroku
@@ -48,25 +48,25 @@ brew install rbenv
 ```
 This will install rbenv, a tool for managing ruby versions
 
-### Installing git completion
-Git complete is an autocomplete tool for git branches and commands.  This step is optional, though you will have to delete the git completion line from your bashrc file if you decide skip this section. To install git complete run
+### Installing Git completion
+Git completion is an autocomplete tool for git branches and commands.  This step is optional, though you will have to delete the Git completion line from your bashrc file if you decide skip this section. To install Git completion run
 ```
 git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
 curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
 ```
 
-### Uninstall rvm
-rvm is a ruby version manager, but since we will be using rbenv, we can uninstall rvm. Run command
+### Uninstall RVM
+RVM is a ruby version manager, but since we will be using rbenv, we can uninstall RVM. Run command
 ```
 which rvm
 ```
-If rvm is installed, then run
+If no directory for RVM is displayed, then you are done.  If RVM's location is displayed then RVM is installed. To uninstall run
 ```
 rvm implode
 ```
 
-### Installing ruby
+### Installing Ruby
 run
 ```
 rbenv init -
@@ -81,7 +81,7 @@ rbenv rehash
 ```
 
 
-### Installing ruby libraries
+### Installing Ruby libraries
 To install the necessary ruby libraries run
 ```
 rm Gemfile.lock > /dev/null
@@ -91,8 +91,8 @@ bundle install
 rbenv rehash
 ```
 
-### Install nvm
-Nvm is the version manager for Javascript.  To get nvm installed run
+### Install NVM
+NVM is the version manager for Javascript.  To get NVM installed run
 ```
 NVM_DIR = $HOME/.nvm
 ```
@@ -104,43 +104,34 @@ git checkout `git describe --abbrev=0 --tag`
 ```
 Notice that the git command uses backticks and not quotes
 
-### Activating nvm
-to activate nvm run these commands
+### Activating NVM
+to activate NVM run these commands
 ```
 cd $NVM_DIR
 source nvm.sh
 cd $requirements_dir
 ```
 
-### Installing node
-Node.js is an open-source, cross-platform runtime environment for developing server-side Web applications. To get node installed run
+### Installing Node
+Node.js is an open-source, cross-platform runtime environment for developing server-side Web applications. To get Node installed run
 ```
 nvm ls 6.2.1
 ```
-if 6.2.1 is displayed then you have node installed.  If node is not installed, run
+if 6.2.1 is displayed then you have Node installed.  If Node is not installed, run
 ```
 nvm install 6.2.1
 nvm alias default 6.2.1
 ```
 
-### Installing node packages
+### Installing Node packages
 Make sure you are in the requirements directory and run the following command
 ```
 npm install -g $(cat "node-packages.txt")
 ```
 
-### Installing atom packages
-Atom is the text editor that is used here at App academy. To install the necessary atom packages run
+### Installing Atom packages
+Atom is the text editor that is used here at App academy. Atom packages are plugins for the Atom text editor.  Many of these plugins help with finding syntax errors or set development preferences, such as using the VIM commands.  Take a look through the atom packages available by opening atom, clicking Atom => preferences => packages .
+To install the necessary Atom packages for this course run
 ```
 apm install --packages-files "atom-packages.txt"
 ```
-
-# Bashrc
-.bashrc is a shell script that Bash runs whenever it is started.  You can put any command into this script file that you can type into the command prompt. People mainly put commands in this file to set up a particular environment or to customize things to your preferences.  You can manually run the bashrc file provided by app academy by navigating to dotfiles/dot running command:
-```
-source ./bashrc
-```
-
-
-# Atom Packages
-Atom packages are plugins for the Atom text editor.  Many of these plugins help with finding syntax errors or set development preferences, such as using the VIM commands.  Take a look through the atom packages available by opening atom, clicking Atom => preferences => packages .
