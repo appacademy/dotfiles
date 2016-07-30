@@ -70,7 +70,10 @@ Gems and Node packages, and some Atom packages. If you are having trouble with t
 ### Install the configuration files.
 
 This will copy over all the configuration files, including Bash and
-linting for JavaScript files.
+linting for JavaScript files. *Warning:* This may overwrite some of your
+existing configuration, but if that happens, you will be prompted
+beforehand. If you want to save any of those files say "no", copy the
+files in question into a separate folder and then run the script again.
 
 ```
 ~/.dotfiles/bin/install_dotfiles
