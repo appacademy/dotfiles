@@ -118,16 +118,17 @@ script, but you may have to tweak the config files after you do.
 ### Windows
 
 You can install Ruby, MySQL, Node, and all our other dependencies in
-Windows, but if you choose to go this route, you're totally on your own.
-Our instructors are trained on Macs and the OS architecture is just too
-different for us to be able to help you debug issues.
+Windows, but be forewarned: **this can be a massive headache**. If you
+choose to go this route, you're totally on your own. Our instructors are
+trained on Macs and the Windows architecture is just too different for
+us to be able to help you debug issues.
 
 Instead, we suggest installing Ubuntu Linux alongside Windows in a
 [dual-boot setup][dual-boot]. If the thought of partitioning your hard
 drive makes you queasy, don't worry. The Ubuntu installer will walk you
-through it. If you still don't like that idea, there are other ways to
-install Ubuntu on a Windows machine, but they not as performant. Feel
-free to Google it.
+through it. Just be sure to back everything up first. If you still don't
+like that idea, there are other ways to install Ubuntu on a Windows
+machine, but they not as performant. Feel free to Google it.
 
 [dual-boot]: https://help.ubuntu.com/community/WindowsDualBoot
 
