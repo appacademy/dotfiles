@@ -1,11 +1,21 @@
 # App Academy Dotfiles
 
-This is the one repo you need to set up your Mac for App Academy. It
-combines configuration files and installation scripts to automate the setup process and make your life easier.
+This is the one repo you need to set up your Macbook for App Academy. It
+combines configuration files and installation scripts to automate the
+setup process and make your life easier. (If you do not have a Macbook,
+see the note on [other operating systems](#other-operating-systems).)
 
 We've selected some simple configuration settings that will get you set
 up and ready to develop. You can tweak these as you learn more and
 develop your own configuration preferences.
+
+If for whatever reason you prefer to do your configuration manually,
+just read through the [requirements](./requirements) and
+[dotfiles](./dot), making the corresponding changes on your machine. (If
+you're running Linux, you'll _have_ to do it this way.)
+
+If you run into trouble, don't worry. Our instructors will be around on
+the first day to help you with any issues you may have.
 
 ## Preparing your machine for Dotfiles.
 
@@ -61,7 +71,9 @@ git clone https://github.com/appacademy/dotfiles.git .dotfiles
 ### Install the requirements.
 
 This will install all the requirements, including Ruby and Node, various
-Gems and Node packages, and some Atom packages. If you are having trouble with the script below, follow [these instructions](https://github.com/appacademy/dotfiles/tree/master/requirements) to manually get things set up.
+Gems and Node packages, and some Atom packages. If you are having
+trouble with the script below, follow [these
+instructions](./requirements) to manually get things set up.
 
 ```
 ~/.dotfiles/bin/install_requirements
@@ -82,3 +94,39 @@ files in question into a separate folder and then run the script again.
 ## That's it!
 
 You're done! No more installation required.
+
+## Other Operating Systems
+
+This repository is created for machines running **Mac OSX**. Note that
+we do not technically support other operating systems, but many students
+have succeeded in the course using Linux.
+
+### Linux
+
+If you have a Linux machine, setup will be largely the same, but
+you'll need to adapt the requirements and dotfiles for your specific
+flavor (e.g. you can't use Homebrew, so you'll have to find those
+packages using apt, yum, pacman, wget, etc).
+
+### Windows
+
+You can install Ruby, MySQL, Node, and all our other dependencies in
+Windows, but if you choose to go this route, you're totally on your own.
+Our instructors are trained on Macs and the OS architecture is just too
+different for us to be able to help you debug issues.
+
+Instead, we suggest installing Ubuntu Linux alongside Windows in a
+[dual-boot setup][dual-boot]. If the thought of partitioning your hard
+drive makes you queasy, don't worry. The Ubuntu installer will walk you
+through it. If you still don't like that idea, there are other ways to
+install Ubuntu on a Windows machine, but they not as performant. Feel
+free to Google it.
+
+[dual-boot]: https://help.ubuntu.com/community/WindowsDualBoot
+
+### None
+
+If you do not have your own machine, no problem. We have enough here
+that you can use one of our Mac Minis during the course and the job
+search. Note that these stay in the office, so you won't be able to do
+any of your coding homework from home.
