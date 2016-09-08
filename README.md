@@ -81,11 +81,14 @@ instructions](./requirements) to manually get things set up.
 
 ### Install the configuration files.
 
-This will copy over all the configuration files, including Bash and
-linting for JavaScript files. *Warning:* This may overwrite some of your
-existing configuration, but if that happens, you will be prompted
-beforehand. If you want to save any of those files say "no", copy the
-files in question into a separate folder and then run the script again.
+This will copy over all the configuration files, including those for
+Bash and JavaScript linting.
+
+**Warning:** If you have existing configuration files, this will
+overwrite them. When you run this script, it will probably prompt you
+about this. When it does, be sure to look over the files in question. If
+you want to save them, copy them into a separate file or folder and then
+run the script again.
 
 ```
 ~/.dotfiles/bin/install_dotfiles
