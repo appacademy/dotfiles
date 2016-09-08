@@ -11,8 +11,7 @@ develop your own configuration preferences.
 
 If for whatever reason you prefer to do your configuration manually,
 just read through the [requirements](./requirements) and
-[dotfiles](./dot), making the corresponding changes on your machine. (If
-you're running Linux, you'll _have_ to do it this way.)
+[dotfiles](./dot), making the corresponding changes on your machine.
 
 If you run into trouble, don't worry. Our instructors will be around on
 the first day to help you with any issues you may have.
@@ -110,6 +109,11 @@ If you have a Linux machine, setup will be largely the same, but
 you'll need to adapt the requirements and dotfiles for your specific
 flavor (e.g. you can't use Homebrew, so you'll have to find those
 packages using apt, yum, pacman, wget, etc).
+
+This means that you will not be able to run the requirements install
+script. Instead, read through the [requirements](./requirements) docs
+and make those changes manually. You can still use the dotfiles install
+script, but you may have to tweak the config files after you do.
 
 ### Windows
 
