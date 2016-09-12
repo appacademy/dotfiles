@@ -50,17 +50,18 @@ fi
 log "Installing Ruby..."
 eval "$(rbenv init -)" || fail "could not activate rbenv"
 if rbenv global "$RUBY_VERSION"; then
-  log "Ruby v$RUBY_VERSION already installed"
+  log "Ruby v$RUBY_VERSION already installed.
 else
   log "Upgrading rbenv..."
   brew upgrade rbenv ruby-build
 
   log "Installing Ruby v$RUBY_VERSION..."
   rbenv install "$RUBY_VERSION"
-  rbenv global "$RUBY_VERSION"
-  rbenv rehash
   log "Ruby v$RUBY_VERSION installed."
 fi
+rbenv global "$RUBY_VERSION"
+rbenv rehash
+log "Ruby v$RUBY_VERSION set as default version."
 
 log "Installing Ruby gems..."
 rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
