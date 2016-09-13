@@ -50,7 +50,7 @@ fi
 log "Installing Ruby..."
 eval "$(rbenv init -)" || fail "could not activate rbenv"
 if rbenv global "$RUBY_VERSION"; then
-  log "Ruby v$RUBY_VERSION already installed.
+  log "Ruby v$RUBY_VERSION already installed."
 else
   log "Upgrading rbenv..."
   brew upgrade rbenv ruby-build
