@@ -118,8 +118,9 @@ script, but you may have to tweak the config files after you do.
 ### Windows
 
 You can install Ruby, MySQL, Node, and all our other dependencies in
-Windows, but be forewarned: **this can be a massive headache**. If you
-choose to go this route, you're totally on your own. Our instructors are
+Windows, but be forewarned: **this can be a massive headache**. The
+packages and installation instructions may be very different, and if you
+run into any problems, you're totally on your own. Our instructors are
 trained on Macs and the Windows architecture is just too different for
 us to be able to help you debug issues.
 
