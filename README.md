@@ -97,10 +97,11 @@ run the script again.
 
 You're done! No more installation required.
 
-## Debugging
+## Troubleshooting
 
 If you've installed the dotfiles and you're still having some issues
-with your environment, check out our [debugging docs](./debugging.md).
+with your environment, check out our [troubleshooting
+docs](./troubleshooting.md).
 
 ## Other Operating Systems
 

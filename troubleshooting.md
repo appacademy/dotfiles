@@ -1,4 +1,4 @@
-# Debugging your Environment
+# Troubleshooting your Environment
 
 Here are some common environment issues you may run into. Go ahead and
 try these fixes, but if they don't work, no worries––just bring it to
