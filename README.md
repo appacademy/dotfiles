@@ -97,6 +97,11 @@ run the script again.
 
 You're done! No more installation required.
 
+## Debugging
+
+If you've installed the dotfiles and you're still having some issues
+with your environment, check out our [debugging docs](./debugging.md).
+
 ## Other Operating Systems
 
 This repository is created for machines running **Mac OSX**. Note that
