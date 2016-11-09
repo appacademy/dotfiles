@@ -24,11 +24,6 @@ brew update
 Run the following commands:
 
 ```
-brew install ag
-```
-This is an optional step. This will install a code searching tool (the silver searcher)
-
-```
 brew install git
 ```
 This will install Git, a version control tool

@@ -1,4 +1,3 @@
-ag
 git
 heroku
 qt
