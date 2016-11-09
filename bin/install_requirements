@@ -64,6 +64,8 @@ rbenv rehash
 log "Ruby v$RUBY_VERSION set as default version."
 
 log "Installing Ruby gems..."
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+# ^ ensure Postres libs are available so pg gem can install
 rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
 gem install bundler
 rbenv rehash
