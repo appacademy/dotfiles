@@ -4,9 +4,6 @@ global:
   welcome:
     showOnStartup: false
   core:
-    disabledPackages: [
-      "linter-rubocop"
-    ]
     audioBeep: false
   editor:
     fontSize: 14
