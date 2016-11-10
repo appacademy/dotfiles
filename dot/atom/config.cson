@@ -1,28 +1,29 @@
-global:
-  "exception-reporting":
-    userId: "app-academy"
-  welcome:
-    showOnStartup: false
+"*":
   core:
     audioBeep: false
+    telemetryConsent: "no"
   editor:
     fontSize: 14
     invisibles: {}
     preferredLineLength: 72
-    showInvisibles: true
     showIndentGuide: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "app-academy"
   linter:
-    lintOnFly: false
-    ignoreVCSIgnoredFiles: false
-    statusIconScope: "File"
-    showErrorTabLine: true
     errorPanelHeight: 180
+    ignoreVCSIgnoredFiles: false
+    lintOnFly: false
     showErrorPanel: false
+    showErrorTabLine: true
     showErrorTabProject: false
+    statusIconScope: "File"
   "linter-eslint":
-    globalNodePath: "<%= HOME %>/.nvm/versions/node/v6.2.1"
+    globalNodePath: "/Users/appacademy/.nvm/versions/node/v6.2.1"
     useGlobalEslint: true
   "linter-rubocop":
-    executablePath: "<%= HOME %>/.rbenv/shims/rubocop"
+    executablePath: "/Users/appacademy/.rbenv/shims/rubocop"
   "markdown-preview":
     liveUpdate: false
+  welcome:
+    showOnStartup: false
