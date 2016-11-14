@@ -19,10 +19,10 @@
     showErrorTabProject: false
     statusIconScope: "File"
   "linter-eslint":
-    globalNodePath: "/Users/appacademy/.nvm/versions/node/v6.2.1"
+    globalNodePath: "<%= HOME %>/.nvm/versions/node/v6.2.1"
     useGlobalEslint: true
   "linter-rubocop":
-    executablePath: "/Users/appacademy/.rbenv/shims/rubocop"
+    executablePath: "<%= HOME %>/.rbenv/shims/rubocop"
   "markdown-preview":
     liveUpdate: false
   welcome:
