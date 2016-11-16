@@ -62,11 +62,31 @@ You should now have a working Linux installation on your machine. Woot!
 In general, Linux uses BASH as its terminal scripting language, so everything should feel pretty familiar. Before we get started setting up our development environment, let me introduce you to your new package manager, APT. APT works very similarly to OSX's 'brew' package manager for installation, removal and upgrading packages. Here are a couple of the most common APT commands:
 
 ```bash
-sudo apt-get install <package-name> # install a package
-sudo apt-get remove <package-name> # remove a package
-sudo apt-get update # updates package lists
+$ sudo apt-get install <package-name> # install a package
+$ sudo apt-get remove <package-name> # remove a package
+$ sudo apt-get update # updates package lists
 ```
 
 In linux, installing most development-related packages requires administrator permissions, so `sudo` will prefix most of our commands.
 
-Take a look at [linux_install.sh](/linux_install.sh) and get a feel for what it is installing on your machine.
+Before we install any dev packages let's install [Google Chrome](google.com/chrome) and [Atom](atom.io). Download the .deb files available from the download pages and double click to install. This should open a install dialogue.
+
+Take a look at [dev_setup_script.sh](/dev_setup_script.sh) and get a feel for what it is installing on your machine. Also, verify that the package versions are those you want to use. The script installs the following packages:
+* Git - latest stable version
+* Node + webpack - 6.x
+* A bunch of Ruby + SQL + Rails dependencies
+* Postgresql - latest stable version
+* rbenv - latest stable version
+* Ruby + bundler - 2.3.1
+* Rails - latest stable version
+
+You will need to make the script executable before running it.
+
+```bash
+$ chmod +x dev_setup_script.sh # make executable
+$ ./dev_setup_script.sh # run the script
+```
+
+The script will install each group of packages at a time and prompt you to continue with install after each successful installation. You may encounter errors. If you do, search for the error and practice those debugging skills.
+
+Good luck!

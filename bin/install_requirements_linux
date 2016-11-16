@@ -1,51 +1,83 @@
+printf "\n\n====> Linux Development Setup <===="
+printf "\nEach group of packages wl be install one at a time. Follow the prompts to continue.\n"
+read -p "Press enter to continue"
+clear
+
+# Updates package lists
+sudo apt-get update
+# Updates packages to newest version
+sudo apt-get upgrade
+
+printf "\n\n====> Package upgrade complete <====\n"
+read -p "Press enter to continue"
+clear
+
 ## Git
-sudo apt-get install git -y
+sudo apt-get install git
 git config --global color.ui true
 git config --global user.name "your name here"
 git config --global user.email your_email_here
 
-## Atom
-sudo dpkg -i atom-amd64.deb
-sudo apt-get install -f
+printf "\n\n====> Git install complete <====\n"
+read -p "Press enter to continue"
+clear
 
 ## Node
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm i -g webpack -y
+sudo apt-get install nodejs
+sudo npm i -g webpack # installs webpack globally
 
-## Ruby & rails
+printf "\n\n====> git install complete <====\n"
+read -p "Press enter to continue"
+clear
 
-### install dependencies
-sudo apt-get update -y
-sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev -y libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev imagemagick -y
-sudo apt-get update -y
+## Dependencies
+sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get update
 
-## mySQL
-sudo apt-get install mysql-server mysql-client libmysqlclient-dev -y
+printf "\n\n====> Node + Webpack install complete <====\n"
+read -p "Press enter to continue"
+clear
 
 ## Postgresql
-sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install postgresql-common -y
-sudo apt-get install postgresql-9.5 libpq-dev -y
 
-### install rbenv
-cd
-git clone git://github.com/sstephenson/rbenv.git .rbenv
+sudo apt-get install postgresql postgresql-contrib
+# creates admin role in psql for current user
+sudo -u postgres createuser "$USER" -s
+
+printf "\n\n====> Postgresql install complete <====\n"
+read -p "Press enter to continue"
+clear
+
+## Rbenv
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-### install ruby
-rbenv install -v 2.3.1
+printf "\n\n====> Rbenv install complete <====\n"
+read -p "Press enter to continue"
+clear
+
+## Ruby
+rbenv install 2.3.1
 rbenv global 2.3.1
+rbenv rehash
 
 ### install bundler to manage dependencies
 gem install bundler
+rbenv rehash
 
-### install rails
+printf "\n\n====> Ruby + Bundler install complete <====\n"
+read -p "Press enter to continue"
+clear
+
+## Rails
 gem install rails
 rbenv rehash
+
+printf "\n\n====> Rails install complete <====\n"
+read -p "Done installing. Press enter to continue"
+clear
