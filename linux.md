@@ -57,7 +57,7 @@ Another note. I would *very strongly* recommend doing your installation where yo
 
 You should now have a working Linux installation on your machine. Woot!
 
-### Setting up your development environment
+## Setting up the development environment
 
 In general, Linux uses BASH as its terminal scripting language, so everything should feel pretty familiar. Before we get started setting up our development environment, let me introduce you to your new package manager, APT. APT works very similarly to OSX's 'brew' package manager for installation, removal and upgrading packages. Here are a couple of the most common APT commands:
 
@@ -69,4 +69,4 @@ sudo apt-get update # updates package lists
 
 In linux, installing most development-related packages requires administrator permissions, so `sudo` will prefix most of our commands.
 
-Take a look at [install.sh](/install.sh)
+Take a look at [linux_install.sh](/linux_install.sh) and get a feel for what it is installing on your machine.
