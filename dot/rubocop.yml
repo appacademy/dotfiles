@@ -653,7 +653,7 @@ Metrics/LineLength:
 
 Style/StringLiterals:
   Enabled: false
-  
+
 Style/Documentation:
   Enabled: false
 
@@ -722,6 +722,9 @@ Style/NumericPredicate:
   Enabled: false
 
 Style/SpaceInsideBrackets:
+  Enabled: false
+
+Style/SpacesInsideHashLiteralBraces:
   Enabled: false
 
 Style/PredicateName:
