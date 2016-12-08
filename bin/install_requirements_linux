@@ -1,3 +1,5 @@
+#!/bin/bash
+
 printf "\n\n====> Linux Development Setup <===="
 printf "\nEach group of packages wl be install one at a time. Follow the prompts to continue.\n"
 read -p "Press enter to continue"
