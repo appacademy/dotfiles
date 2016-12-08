@@ -111,15 +111,7 @@ have succeeded in the course using Linux.
 
 ### Linux
 
-If you have a Linux machine, setup will be largely the same, but
-you'll need to adapt the requirements and dotfiles for your specific
-flavor (e.g. you can't use Homebrew, so you'll have to find those
-packages using apt, yum, pacman, wget, etc).
-
-This means that you will not be able to run the requirements install
-script. Instead, read through the [requirements](./requirements) docs
-and make those changes manually. You can still use the dotfiles install
-script, but you may have to tweak the config files after you do.
+If you have a Linux machine, setup will be largely the same but slightly more involved. Take a look at [Linux Development Setup](./linux/README.md#setting-up-the-development-environment) for instructions and an installation script that will install and configure most of the tools you will be using at App Academy.
 
 ### Windows
 
@@ -130,14 +122,9 @@ run into any problems, you're totally on your own. Our instructors are
 trained on Macs and the Windows architecture is just too different for
 us to be able to help you debug issues.
 
-Instead, we suggest installing Ubuntu Linux alongside Windows in a
-[dual-boot setup][dual-boot]. If the thought of partitioning your hard
-drive makes you queasy, don't worry. The Ubuntu installer will walk you
-through it. Just be sure to back everything up first. If you still don't
-like that idea, there are other ways to install Ubuntu on a Windows
-machine, but they not as performant. Feel free to Google it.
+Instead, we suggest installing Ubuntu Linux for use on your personal machine. Linux can be installed over Windows (overwriting your Windows install) or alongside in a dual-boot setup. You can find a full tutorial for both install and development setup [here](./linux/README.md).
 
-[dual-boot]: https://help.ubuntu.com/community/WindowsDualBoot
+**NB:** This setup can take some time and can potentially corrupt your Windows installation. Make sure to read all instructions before proceeding.
 
 ### None
 
