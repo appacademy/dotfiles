@@ -25,6 +25,7 @@ clear
 ## Node
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install nodejs
+sudo apt-get install npm
 sudo npm i -g webpack # installs webpack globally
 
 printf "\n\n====> git install complete <====\n"
