@@ -1,0 +1,4 @@
+eslint
+json
+phantomjs-prebuilt
+webpack

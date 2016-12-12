@@ -1,45 +1,23 @@
 #!/bin/bash
-RUBY_VERSION='2.3.1'
-NODE_VERSION='6.2.1'
 
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
 script="$(basename $0)"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 log() {
   echo -e "${PURPLE}${script}:${RESET} $1"
 }
 
 fail() {
-  echo -e "${RED}${script} failed:${RESET} $1" >&2
+  log -e "${RED}${script} failed:${RESET} $1" >&2
   exit 1
 }
 
-cd "$( dirname "$0" )/../requirements"
-requirements_dir="$( pwd )"
+cd $SCRIPT_DIR
 
-log "Installing Homebrew..."
-if which brew > /dev/null; then
-  log "Hombrew already installed. Updating..."
-  brew update
-  log "Hombrew updated."
-else
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
-    || fail "could not install Homebrew"
-  log "Hombrew installed."
-fi
-
-log "Installing Brew formulae..."
-brew install $(cat "brew-formulae.txt") \
-  || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
-log "Brew formulae installed."
-
-log "Installing Git completion..."
-git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
-curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
-curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
-log "Git completion installed."
+## remove RVM
 
 if which rvm > /dev/null; then
   log "rvm detected. Imploding..."
@@ -47,66 +25,35 @@ if which rvm > /dev/null; then
   log "rvm imploded."
 fi
 
-log "Installing Ruby..."
-eval "$(rbenv init -)" || fail "could not activate rbenv"
-if rbenv global "$RUBY_VERSION"; then
-  log "Ruby v$RUBY_VERSION already installed."
-else
-  log "Upgrading rbenv..."
-  brew upgrade rbenv ruby-build
-
-  log "Installing Ruby v$RUBY_VERSION..."
-  rbenv install "$RUBY_VERSION"
-  log "Ruby v$RUBY_VERSION installed."
-fi
-rbenv global "$RUBY_VERSION"
-rbenv rehash
-log "Ruby v$RUBY_VERSION set as default version."
-
-log "Installing Ruby gems..."
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-# ^ ensure Postgres libs are available so pg gem can install
-rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
-gem install bundler
-rbenv rehash
-bundle install
-rbenv rehash
-log "Gems installed."
-
-log "Installing NVM..."
-[[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
-if [[ -d "$NVM_DIR" ]]; then
-  log "NVM already installed."
-else
-  git clone https://github.com/creationix/nvm.git "$NVM_DIR" \
-    && cd "$NVM_DIR" \
-    && git checkout `git describe --abbrev=0 --tags` \
-    || fail "could not install NVM"
-  log "NVM installed."
-fi
-log "Activating NVM..."
-cd "$NVM_DIR"
-source nvm.sh
-cd "$requirements_dir"
-log "NVM Activated."
-
-log "Installing Node..."
-if nvm ls "$NODE_VERSION" > /dev/null; then
-  log "Node v$NODE_VERSION already installed."
-else
-  nvm install "$NODE_VERSION" || fail "could not install Node"
-  nvm alias default "$NODE_VERSION"
-  log "Node v$NODE_VERSION Installed."
-fi
-
-log "Installing node packages..."
-npm install -g $(cat "node-packages.txt")
-log "Node packages installed."
+## Atom Packages
 
 if which atom > /dev/null; then
   log "Installing atom packages..."
-  apm install --packages-file "atom-packages.txt"
+  apm install --packages-file "../requirements/atom-packages.txt"
   log "Atom packages installed."
 fi
 
-log "done."
+
+log "\n\n====> Atom Packages install complete <====\n"
+read -p "Press enter to continue."
+clear
+
+cd $SCRIPT_DIR
+case "$(uname -s)" in
+
+   Darwin)
+     ## operating system is Mac OS
+     chmod +x install_requirements_mac
+     ./install_requirements_mac
+     ;;
+
+   Linux)
+     ## operating system is Linux
+     chmod +x install_requirements_linux
+     ./install_requirements_linux
+     ;;
+
+   *)
+     log 'Unsupported OS'
+     ;;
+esac
