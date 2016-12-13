@@ -4,7 +4,8 @@ RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
 script="$(basename "$0")"
-SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+script_dir="$( cd "$( dirname "$0" )" && pwd )"
+requirements_dir="$( dirname "$script_dir" )/requirements"
 
 log() {
   echo -e "${PURPLE}${script}:${RESET} $1"
@@ -15,7 +16,7 @@ fail() {
   exit 1
 }
 
-cd $SCRIPT_DIR
+cd $script_dir
 
 log "Removing rvm if you have it..."
 read -p "Press enter to continue."
@@ -26,7 +27,7 @@ if which rvm > /dev/null; then
   log "rvm imploded."
 fi
 
-cd $SCRIPT_DIR
+cd $script_dir
 
 log "Switch to OS specific script..."
 read -p "Press enter to continue."
@@ -53,14 +54,13 @@ esac
 log "Switching back to non-OS specific script..."
 log "Installing Ruby..."
 read -p "Press enter to continue."
+cd $requirements_dir
 
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail "unable to add PATH variable"
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail "could not activate rbenv"
 if rbenv global "$RUBY_VERSION"; then
   log "Ruby v$RUBY_VERSION already installed."
 else
-  log "Upgrading rbenv..."
-
+  log "activating rbenv..."
+  eval "$(rbenv init -)" || fail "could not activate rbenv"
   log "Installing Ruby v$RUBY_VERSION..."
   rbenv install "$RUBY_VERSION"
   log "Ruby v$RUBY_VERSION installed."
@@ -68,7 +68,7 @@ fi
 rbenv global "$RUBY_VERSION"
 rbenv rehash
 
-log "Ruby v${RUBY_VERSION} set as default version."
+log "Ruby v$RUBY_VERSION set as default version."
 log "Installing bundler and gems..."
 read -p "Press enter to continue."
 

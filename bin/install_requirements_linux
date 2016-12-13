@@ -17,9 +17,6 @@ fail() {
   exit 1
 }
 
-cd "$( dirname "$0" )/../requirements"
-requirements_dir="$( pwd )"
-
 clear
 log "Linux Development Setup"
 log "Each group of packages will be install one at a time. Follow the prompts to continue."
@@ -70,13 +67,26 @@ else
 fi
 
 log "Postgresql install complete..."
+log "Installing Rbenv next..."
+read -p "Press enter to continue"
+
+if which rbenv > /dev/null; then
+  log "rbenv already installed"
+else
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail "unable to add PATH variable"
+  echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail "could not activate rbenv"
+  source ~/.bashrc
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+
+log "Rbenv installed"
 log "Installing NVM, Node and NPM next..."
 read -p "Press enter to continue"
 clear
 
 ##NVM (node version manager), Node, and NPM
 
-[[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
 if [[ -d "$NVM_DIR" ]]; then
   log "NVM already installed."
 else
@@ -88,8 +98,9 @@ fi
 if nvm ls "$NODE_VERSION" > /dev/null; then
   log "Node v$NODE_VERSION already installed."
 else
+  source ~/.nvm/nvm.sh
   nvm install "$NODE_VERSION"
-  nvm use node
+  nvm use node "$NODE_VERSION"
   npm install -g npm
 fi
 
