@@ -35,13 +35,19 @@ fi
 
 log "Package upgrade complete..."
 read -p "Press enter to continue"
+log "Installing git next..."
 clear
 
 ## Git
+log "Please enter your git name"
+read name
+log "Please enter your git associated email address"
+read email
+
 sudo apt-get install git
 git config --global color.ui true
-git config --global user.name "your name here"
-git config --global user.email your_email_here
+git config --global user.name "$name"
+git config --global user.email $email
 
 log "Git Install complete"
 log "Installing Dependencies next..."
