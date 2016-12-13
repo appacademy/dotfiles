@@ -6,7 +6,7 @@ NODE_VERSION='6.2.1'
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
-script="$(basename $0)"
+script="$(basename "$0")"
 
 log() {
   echo -e "${PURPLE}${script}:${RESET} $1"
@@ -64,43 +64,6 @@ log "\n\n====> Postgresql install complete <====\n"
 read -p "Press enter to continue"
 clear
 
-## Rbenv
-
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-export eval "$(rbenv init -)"
-source ~/.bashrc
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-log "\n\n====> Rbenv install complete <====\n"
-read -p "Press enter to continue"
-clear
-
-## Ruby
-rbenv install 2.3.1
-rbenv global 2.3.1
-rbenv rehash
-
-log "\n\n====> Ruby 2.3.1 install complete <====\n"
-read -p "Press enter to continue"
-clear
-
-### install bundler to manage dependencies
-gem install bundler
-rbenv rehash
-
-log "\n\n====> Ruby + Bundler install complete <====\n"
-read -p "Press enter to continue"
-clear
-
-## Gems
-bundle
-rbenv rehash
-
-log "\n\n====> Gems installed <====\n"
-read -p "Press enter to continue"
-clear
-
 ##NVM (node version manager), Node, and NPM
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
@@ -108,13 +71,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 source ~/.bashrc
 
-nvm install node
+nvm install "$NODE_VERSION"
 nvm use node
 npm install -g npm
-
-##Node packages
-
-
-npm install -g $(cat "node-packages.txt")
-
-log "\n\n====> Node Packages installed <====\ndone."

@@ -5,7 +5,7 @@ NODE_VERSION='6.2.1'
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
-script="$(basename $0)"
+script="$(basename "$0")"
 
 log() {
   echo -e "${PURPLE}${script}:${RESET} $1"
@@ -23,6 +23,7 @@ log "Installing Homebrew..."
 if which brew > /dev/null; then
   log "Hombrew already installed. Updating..."
   brew update
+  brew upgrade rbenv ruby-build
   log "Hombrew updated."
 else
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
@@ -35,38 +36,10 @@ brew install $(cat "brew-formulae.txt") \
   || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
 log "Brew formulae installed."
 
-log "Installing Git completion..."
-git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
-curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
-curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
-log "Git completion installed."
-
-
-log "Installing Ruby..."
-eval "$(rbenv init -)" || fail "could not activate rbenv"
-if rbenv global "$RUBY_VERSION"; then
-  log "Ruby v$RUBY_VERSION already installed."
-else
-  log "Upgrading rbenv..."
-  brew upgrade rbenv ruby-build
-
-  log "Installing Ruby v$RUBY_VERSION..."
-  rbenv install "$RUBY_VERSION"
-  log "Ruby v$RUBY_VERSION installed."
-fi
-rbenv global "$RUBY_VERSION"
-rbenv rehash
-log "Ruby v$RUBY_VERSION set as default version."
-
 log "Installing Ruby gems..."
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # ^ ensure Postgres libs are available so pg gem can install
-rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
-gem install bundler
-rbenv rehash
-bundle install
-rbenv rehash
-log "Gems installed."
+
 
 log "Installing NVM..."
 [[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
@@ -93,9 +66,3 @@ else
   nvm alias default "$NODE_VERSION"
   log "Node v$NODE_VERSION Installed."
 fi
-
-log "Installing node packages..."
-npm install -g $(cat "node-packages.txt")
-log "Node packages installed."
-
-log "done."

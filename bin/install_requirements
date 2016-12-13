@@ -3,8 +3,8 @@
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
-script="$(basename $0)"
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+script="$(basename "$0")"
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 log() {
   echo -e "${PURPLE}${script}:${RESET} $1"
@@ -25,18 +25,6 @@ if which rvm > /dev/null; then
   log "rvm imploded."
 fi
 
-## Atom Packages
-
-if which atom > /dev/null; then
-  log "Installing atom packages..."
-  apm install --packages-file "../requirements/atom-packages.txt"
-  log "Atom packages installed."
-fi
-
-
-log "\n\n====> Atom Packages install complete <====\n"
-read -p "Press enter to continue."
-clear
 
 cd $SCRIPT_DIR
 case "$(uname -s)" in
@@ -58,12 +46,56 @@ case "$(uname -s)" in
      ;;
 esac
 
-# Git Completion
+clear
+log "Installing Ruby..."
+read -p "Press enter to continue."
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail
+if rbenv global "$RUBY_VERSION"; then
+  log "Ruby v$RUBY_VERSION already installed."
+else
+  log "Upgrading rbenv..."
+
+  log "Installing Ruby v$RUBY_VERSION..."
+  rbenv install "$RUBY_VERSION"
+  log "Ruby v$RUBY_VERSION installed."
+fi
+rbenv global "$RUBY_VERSION"
+rbenv rehash
+
+clear
+log "Ruby v$RUBY_VERSION set as default version."
+log "Install bundler and gems"
+read -p "Press enter to continue."
+rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
+gem install bundler
+rbenv rehash
+bundle install
+rbenv rehash
+
+clear
+log "Gems installed."
+log "Installing Git completion..."
+read -p "Press enter to continue."
 git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
 curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
 log "Git completion installed."
 
-log "\n\n====> Git and Git Completion install complete <====\n"
-read -p "Press enter to continue"
 clear
+log "Installing atom packages..."
+read -p "Press enter to continue."
+if which atom > /dev/null; then
+  apm install --packages-file "../requirements/atom-packages.txt"
+  log "Atom packages installed."
+else
+  fail "Please install atom and then install atom packages."
+fi
+
+clear
+log "Installing node packages..."
+read -p "Press enter to continue."
+npm install -g $(cat "node-packages.txt")
+log "Node packages installed."
+
+log "done."
