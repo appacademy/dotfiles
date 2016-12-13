@@ -1,6 +1,4 @@
 eslint
 json
-ws
-node-inspector
 phantomjs-prebuilt
 webpack

@@ -25,10 +25,16 @@ log "\nEach group of packages will be install one at a time. Follow the prompts 
 read -p "Press enter to continue"
 clear
 
-# Updates package lists
-sudo apt-get update
-# Updates packages to newest version
-sudo apt-get upgrade
+
+OS="$(lsb_release -si)"
+if [[ "$OS" =~ ^(Ubuntu|Debian)$ ]]; then
+  # Updates package lists
+  sudo apt-get update
+  # Updates packages to newest version
+  sudo apt-get upgrade
+else
+  fail "Unsupported flavor or Linux"
+fi
 
 log "\n\n====> Package upgrade complete <====\n"
 read -p "Press enter to continue"
@@ -119,6 +125,6 @@ npm install -g npm
 ##Node packages
 
 
-npm install -g $(cat "node-packages-linux.txt")
+npm install -g $(cat "node-packages.txt")
 
 log "\n\n====> Node Packages installed <====\ndone."
