@@ -17,7 +17,8 @@ fail() {
 
 cd $SCRIPT_DIR
 
-## remove RVM
+log "Removing rvm if you have it..."
+read -p "Press enter to continue."
 
 if which rvm > /dev/null; then
   log "rvm detected. Imploding..."
@@ -25,8 +26,11 @@ if which rvm > /dev/null; then
   log "rvm imploded."
 fi
 
-
 cd $SCRIPT_DIR
+
+log "Switch to OS specific script..."
+read -p "Press enter to continue."
+
 case "$(uname -s)" in
 
    Darwin)
@@ -46,11 +50,12 @@ case "$(uname -s)" in
      ;;
 esac
 
-clear
+log "Switching back to non-OS specific script..."
 log "Installing Ruby..."
 read -p "Press enter to continue."
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail "unable to add PATH variable"
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail "could not activate rbenv"
 if rbenv global "$RUBY_VERSION"; then
   log "Ruby v$RUBY_VERSION already installed."
 else
@@ -63,28 +68,28 @@ fi
 rbenv global "$RUBY_VERSION"
 rbenv rehash
 
-clear
-log "Ruby v$RUBY_VERSION set as default version."
-log "Install bundler and gems"
+log "Ruby v${RUBY_VERSION} set as default version."
+log "Installing bundler and gems..."
 read -p "Press enter to continue."
+
 rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
 gem install bundler
 rbenv rehash
 bundle install
 rbenv rehash
 
-clear
-log "Gems installed."
+log "Gems installed"
 log "Installing Git completion..."
 read -p "Press enter to continue."
+
 git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
 curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
 log "Git completion installed."
 
-clear
 log "Installing atom packages..."
 read -p "Press enter to continue."
+
 if which atom > /dev/null; then
   apm install --packages-file "../requirements/atom-packages.txt"
   log "Atom packages installed."
@@ -92,7 +97,6 @@ else
   fail "Please install atom and then install atom packages."
 fi
 
-clear
 log "Installing node packages..."
 read -p "Press enter to continue."
 npm install -g $(cat "node-packages.txt")

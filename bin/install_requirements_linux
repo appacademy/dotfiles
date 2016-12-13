@@ -20,11 +20,11 @@ fail() {
 cd "$( dirname "$0" )/../requirements"
 requirements_dir="$( pwd )"
 
-log "\n\n====> Linux Development Setup <===="
-log "\nEach group of packages will be install one at a time. Follow the prompts to continue.\n"
-read -p "Press enter to continue"
 clear
-
+log "Linux Development Setup"
+log "Each group of packages will be install one at a time. Follow the prompts to continue."
+log "Updating packages..."
+read -p "Press enter to continue"
 
 OS="$(lsb_release -si)"
 if [[ "$OS" =~ ^(Ubuntu|Debian)$ ]]; then
@@ -36,7 +36,7 @@ else
   fail "Unsupported flavor or Linux"
 fi
 
-log "\n\n====> Package upgrade complete <====\n"
+log "Package upgrade complete..."
 read -p "Press enter to continue"
 clear
 
@@ -46,31 +46,53 @@ git config --global color.ui true
 git config --global user.name "your name here"
 git config --global user.email your_email_here
 
+log "Git Install complete"
+log "Installing Dependencies next..."
+read -p "Press enter to continue"
+clear
+
 ## Dependencies
 sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 sudo apt-get update
 
-log "\n\n====> Node + Webpack install complete <====\n"
+log "Dependencies installed..."
 read -p "Press enter to continue"
 clear
 
 ## Postgresql
 
-sudo apt-get install postgresql postgresql-contrib
-# creates admin role in psql for current user
-sudo -u postgres createuser "$USER" -s
+if which psql > /dev/null; then
+  log "Postgresql already installed"
+else
+  sudo apt-get install postgresql postgresql-contrib
+  # creates admin role in psql for current user
+  sudo -u postgres createuser "$USER" -s
+fi
 
-log "\n\n====> Postgresql install complete <====\n"
+log "Postgresql install complete..."
+log "Installing NVM, Node and NPM next..."
 read -p "Press enter to continue"
 clear
 
 ##NVM (node version manager), Node, and NPM
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-source ~/.bashrc
+[[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
+if [[ -d "$NVM_DIR" ]]; then
+  log "NVM already installed."
+else
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+  source ~/.bashrc
+fi
 
-nvm install "$NODE_VERSION"
-nvm use node
-npm install -g npm
+if nvm ls "$NODE_VERSION" > /dev/null; then
+  log "Node v$NODE_VERSION already installed."
+else
+  nvm install "$NODE_VERSION"
+  nvm use node
+  npm install -g npm
+fi
+
+log "NVM, Node and NPM install complete"
+read -p "Press enter to continue"
+clear
