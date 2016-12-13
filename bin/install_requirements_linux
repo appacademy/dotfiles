@@ -95,10 +95,10 @@ else
   source ~/.bashrc
 fi
 
+source ~/.nvm/nvm.sh
 if nvm ls "$NODE_VERSION" > /dev/null; then
   log "Node v$NODE_VERSION already installed."
 else
-  source ~/.nvm/nvm.sh
   nvm install "$NODE_VERSION"
   nvm use node "$NODE_VERSION"
   npm install -g npm
