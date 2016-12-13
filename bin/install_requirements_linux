@@ -46,16 +46,6 @@ git config --global color.ui true
 git config --global user.name "your name here"
 git config --global user.email your_email_here
 
-# Git Completion
-git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
-curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
-curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
-log "Git completion installed."
-
-log "\n\n====> Git and Git Completion install complete <====\n"
-read -p "Press enter to continue"
-clear
-
 ## Dependencies
 sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 sudo apt-get update
