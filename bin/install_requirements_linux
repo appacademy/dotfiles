@@ -19,7 +19,7 @@ fail() {
 
 prompt() {
   echo -ne "${PURPLE}${script}:${RESET}"
-  read -p "$1"
+  read -p " $1"
 }
 
 clear
