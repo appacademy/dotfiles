@@ -16,11 +16,16 @@ fail() {
   exit 1
 }
 
+prompt() {
+  echo -ne "${PURPLE}${script}:${RESET}"
+  read -p "$1"
+}
+
 cd "$( dirname "$0" )/../requirements"
 requirements_dir="$( pwd )"
 
 log "Installing Homebrew..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 if which brew > /dev/null; then
   log "Hombrew already installed. Updating..."
@@ -34,7 +39,7 @@ else
 fi
 
 log "Installing Brew formulae..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 brew install $(cat "brew-formulae.txt") \
   || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
 log "Brew formulae installed."
@@ -43,7 +48,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 # ^ ensure Postgres libs are available so pg gem can install
 
 log "Installing NVM..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 [[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
 if [[ -d "$NVM_DIR" ]]; then
@@ -56,7 +61,7 @@ else
   log "NVM installed."
 fi
 log "Activating NVM..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 cd "$NVM_DIR"
 source nvm.sh
@@ -64,7 +69,7 @@ cd "$requirements_dir"
 
 log "NVM Activated."
 log "Installing Node..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 if nvm ls "$NODE_VERSION" > /dev/null; then
   log "Node v$NODE_VERSION already installed."

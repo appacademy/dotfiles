@@ -20,10 +20,15 @@ fail() {
   exit 1
 }
 
+prompt() {
+  echo -ne "${PURPLE}${script}:${RESET}"
+  read -p "$1"
+}
+
 cd $script_dir
 
 log "Removing rvm if you have it..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 if which rvm > /dev/null; then
   log "rvm detected. Imploding..."
@@ -34,7 +39,7 @@ fi
 cd $script_dir
 
 log "Switch to OS specific script..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 case "$(uname -s)" in
 
@@ -57,7 +62,7 @@ esac
 
 log "Switching back to non-OS specific script..."
 log "Installing Ruby..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 cd $requirements_dir
 
 if rbenv global "$RUBY_VERSION" > /dev/null; then
@@ -75,7 +80,7 @@ rbenv rehash
 
 log "Ruby v$RUBY_VERSION set as default version."
 log "Installing bundler and gems..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
 gem install bundler
@@ -85,7 +90,7 @@ rbenv rehash
 
 log "Gems installed"
 log "Installing Git completion..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
 curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
@@ -93,7 +98,7 @@ curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
 log "Git completion installed."
 
 log "Installing atom packages..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 
 if which atom > /dev/null; then
   apm install --packages-file "../requirements/atom-packages.txt"
@@ -103,7 +108,7 @@ else
 fi
 
 log "Installing node packages..."
-read -p "Press enter to continue."
+prompt "Press enter to continue."
 npm install -g $(cat "node-packages.txt")
 log "Node packages installed."
 

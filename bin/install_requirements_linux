@@ -17,11 +17,16 @@ fail() {
   exit 1
 }
 
+prompt() {
+  echo -ne "${PURPLE}${script}:${RESET}"
+  read -p "$1"
+}
+
 clear
 log "Linux Development Setup"
 log "Each group of packages will be install one at a time. Follow the prompts to continue."
 log "Updating packages..."
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 
 OS="$(lsb_release -si)"
 if [[ "$OS" =~ ^(Ubuntu|Debian)$ ]]; then
@@ -34,7 +39,7 @@ else
 fi
 
 log "Package upgrade complete..."
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 log "Installing git next..."
 clear
 
@@ -51,7 +56,7 @@ git config --global user.email $email
 
 log "Git Install complete"
 log "Installing Dependencies next..."
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 clear
 
 ## Dependencies
@@ -59,7 +64,7 @@ sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libre
 sudo apt-get update
 
 log "Dependencies installed..."
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 clear
 
 ## Postgresql
@@ -74,7 +79,7 @@ fi
 
 log "Postgresql install complete..."
 log "Installing Rbenv next..."
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 
 if which rbenv > /dev/null; then
   log "rbenv already installed"
@@ -88,7 +93,7 @@ fi
 
 log "Rbenv installed"
 log "Installing NVM, Node and NPM next..."
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 clear
 
 ##NVM (node version manager), Node, and NPM
@@ -111,5 +116,5 @@ else
 fi
 
 log "NVM, Node and NPM install complete"
-read -p "Press enter to continue"
+prompt "Press enter to continue"
 clear
