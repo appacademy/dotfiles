@@ -1,115 +1,243 @@
 #!/bin/bash
 
-
 RUBY_VERSION='2.3.1'
 NODE_VERSION='6.2.1'
 
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
-script="$(basename "$0")"
-script_dir="$( cd "$( dirname "$0" )" && pwd )"
-requirements_dir="$( dirname "$script_dir" )/requirements"
+
+SCRIPT="$(basename "$0")"
+REPO_DIR="$( cd "$( dirname "$0" )/.." && pwd )"
+REQUIREMENTS_DIR="$( dirname "$REPO_DIR" )/requirements"
 
 log() {
-  echo -e "${PURPLE}${script}:${RESET} $1"
+  echo -e "${PURPLE}${SCRIPT}:${RESET} $1"
 }
 
 fail() {
-  echo -e "${RED}${script} failed:${RESET} $1" >&2
+  echo -e "${RED}${SCRIPT} failed:${RESET} $1" >&2
   exit 1
 }
 
-prompt() {
-  echo -ne "${PURPLE}${script}:${RESET}"
-  read -p " $1"
+require_ack() {
+  echo -ne "${PURPLE}${SCRIPT}:${RESET}"
+  read -p " Press enter to continue."
 }
 
-cd $script_dir
-
-log "Removing rvm if you have it..."
-prompt "Press enter to continue."
-
-if which rvm > /dev/null; then
-  log "rvm detected. Imploding..."
-  rvm implode
-  log "rvm imploded."
-fi
-
-cd $script_dir
-
-log "Switch to OS specific script..."
-prompt "Press enter to continue."
-
 case "$(uname -s)" in
+  Darwin)
+    OS='mac'
+    ;;
 
-   Darwin)
-     ## operating system is Mac OS
-     chmod +x install_requirements_mac
-     ./install_requirements_mac
-     ;;
+  Linux)
+    if [[ "$(lsb_release -si)" =~ ^(Ubuntu|Debian)$ ]]; then
+      OS='debian'
+    else
+      fail 'Unsupported OS'
+    fi
+    ;;
 
-   Linux)
-     ## operating system is Linux
-     chmod +x install_requirements_linux
-     ./install_requirements_linux
-     ;;
-
-   *)
-     log 'Unsupported OS'
-     ;;
+  *)
+    fail 'Unsupported OS'
+    ;;
 esac
 
-log "Switching back to non-OS specific script..."
-log "Installing Ruby..."
-prompt "Press enter to continue."
-cd $requirements_dir
 
-if rbenv global "$RUBY_VERSION" > /dev/null; then
-  log "Ruby v$RUBY_VERSION already installed."
-else
-  log "activating rbenv..."
-  eval "$(rbenv init -)" || fail "could not activate rbenv"
-  source ~/.bashrc
-  log "Installing Ruby v$RUBY_VERSION..."
-  rbenv install "$RUBY_VERSION"
-  log "Ruby v$RUBY_VERSION installed."
-fi
-rbenv global "$RUBY_VERSION"
-rbenv rehash
+function install() {
+  cd $REQUIREMENTS_DIR
 
-log "Ruby v$RUBY_VERSION set as default version."
-log "Installing bundler and gems..."
-prompt "Press enter to continue."
+  log "Removing rvm if you have it..."
+  require_ack
 
-rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
-gem install bundler
-rbenv rehash
-bundle install
-rbenv rehash
+  if which rvm > /dev/null; then
+    log "rvm detected. Imploding..."
+    rvm implode
+    log "rvm imploded."
+  fi
 
-log "Gems installed"
-log "Installing Git completion..."
-prompt "Press enter to continue."
+  if [[ "$OS" = 'mac' ]]; then
+    install_mac
+  elif [[ "$OS" = 'debian ']]; then
+    install_linux_debian
+  else
+    fail 'Unsupported OS'
+  fi
 
-git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
-curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
-curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
-log "Git completion installed."
+  log "Installing Ruby..."
+  require_ack
 
-log "Installing atom packages..."
-prompt "Press enter to continue."
+  if rbenv global "$RUBY_VERSION" > /dev/null; then
+    log "Ruby v$RUBY_VERSION already installed."
+  else
+    log "activating rbenv..."
+    eval "$(rbenv init -)" || fail "could not activate rbenv"
+    source ~/.bashrc
+    log "Installing Ruby v$RUBY_VERSION..."
+    rbenv install "$RUBY_VERSION"
+    log "Ruby v$RUBY_VERSION installed."
+  fi
+  rbenv global "$RUBY_VERSION"
+  rbenv rehash
+  log "Ruby v$RUBY_VERSION set as default version."
 
-if which atom > /dev/null; then
-  apm install --packages-file "../requirements/atom-packages.txt"
-  log "Atom packages installed."
-else
-  fail "Please install atom and then install atom packages."
-fi
+  log "Installing bundler and gems..."
+  require_ack
 
-log "Installing node packages..."
-prompt "Press enter to continue."
-npm install -g $(cat "node-packages.txt")
-log "Node packages installed."
+  rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
+  gem install bundler
+  rbenv rehash
+  bundle install
+  rbenv rehash
+  log "Gems installed"
 
-log "done."
+  log "Installing Git completion..."
+  require_ack
+
+  git_url="https://raw.githubusercontent.com/git/git/master/contrib/completion"
+  curl "$git_url/git-completion.bash" > "$HOME/.git-completion.bash"
+  curl "$git_url/git-prompt.sh" > "$HOME/.git-prompt.sh"
+  log "Git completion installed."
+
+  log "Installing NVM..."
+  require_ack
+
+  [[ -n "$NVM_DIR" ]] || export NVM_DIR="$HOME/.nvm"
+  if [[ -d "$NVM_DIR" ]]; then
+    log "NVM already installed."
+  else
+    git clone https://github.com/creationix/nvm.git "$NVM_DIR" \
+      && cd "$NVM_DIR" \
+      && git checkout `git describe --abbrev=0 --tags` \
+      || fail "could not install NVM"
+    log "NVM installed."
+  fi
+
+  log "Activating NVM..."
+  cd "$NVM_DIR"
+  source nvm.sh
+  cd "$REQUIREMENTS_DIR"
+  log "NVM Activated."
+
+  log "Installing Node..."
+  require_ack
+
+  if nvm ls "$NODE_VERSION" > /dev/null; then
+    log "Node v$NODE_VERSION already installed."
+  else
+    nvm install "$NODE_VERSION" || fail "could not install Node"
+    nvm alias default "$NODE_VERSION"
+    log "Node v$NODE_VERSION Installed."
+  fi
+
+  log "Installing node packages..."
+  require_ack
+
+  npm install -g $(cat "node-packages.txt")
+  log "Node packages installed."
+
+  if which atom > /dev/null; then
+    log "Installing atom packages..."
+    require_ack
+
+    apm install --packages-file "../requirements/atom-packages.txt"
+    log "Atom packages installed."
+  else
+    fail "Please install atom and then install atom packages."
+    require_ack
+  fi
+
+  log "done."
+}
+
+function install_mac() {
+  cd $REQUIREMENTS_DIR
+
+  log "Installing Homebrew..."
+  require_ack
+
+  if which brew > /dev/null; then
+    log "Hombrew already installed. Updating..."
+    brew update
+    brew upgrade rbenv ruby-build
+    log "Hombrew updated."
+  else
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+      || fail "could not install Homebrew"
+    log "Hombrew installed."
+  fi
+
+  log "Installing Brew formulae..."
+  require_ack
+
+  brew install $(cat "brew-formulae.txt") \
+    || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
+  log "Brew formulae installed."
+
+  export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+  # ^ ensure Postgres libs are available so pg gem can install
+}
+
+function install_linux_debian() {
+  cd $REQUIREMENTS_DIR
+
+  log "Linux Development Setup"
+  log "Each group of packages will be install one at a time. Follow the prompts to continue."
+  log "Updating packages..."
+  prompt "Press enter to continue"
+
+  # Updates package lists
+  log "Installing Dependencies next..."
+  prompt "Press enter to continue"
+
+  log "updating Debian package listing..."
+  sudo apt-get update
+  log "installing Debian packages..."
+  sudo apt-get install $(cat debian-packages.txt)
+
+  log "Dependencies installed..."
+  prompt "Press enter to continue"
+
+  install_linux
+}
+
+function install_linux() {
+  cd $REQUIREMENTS_DIR
+
+  ## Dependencies
+  sudo apt-get update
+  sudo apt-get install $(cat debian-packages.txt)
+
+  log "Dependencies installed..."
+  prompt "Press enter to continue"
+
+  ## Postgresql
+
+  if which psql > /dev/null; then
+    log "Postgresql already installed"
+  else
+    sudo apt-get install postgresql postgresql-contrib
+    # creates admin role in psql for current user
+    sudo -u postgres createuser "$USER" -s
+  fi
+
+  log "Postgresql install complete..."
+  log "Installing Rbenv next..."
+  prompt "Press enter to continue"
+
+  if which rbenv > /dev/null; then
+    log "rbenv already installed"
+  else
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail "unable to add PATH variable"
+    echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail "could not activate rbenv"
+    source ~/.bashrc
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  fi
+
+  log "Rbenv installed"
+  log "Installing NVM, Node and NPM next..."
+  prompt "Press enter to continue"
+}
+
+install
