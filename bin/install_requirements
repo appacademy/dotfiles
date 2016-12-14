@@ -154,7 +154,7 @@ function install() {
     apm install --packages-file "../requirements/atom-packages.txt"
     log "Atom packages installed."
   else
-    fail "Please install atom and then install atom packages."
+    log "Cannot install Atom packages. Atom not installed."
     require_ack
   fi
 
@@ -185,8 +185,8 @@ function install_mac() {
     || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
   log "Brew formulae installed."
 
+  # ensure Postgres libs are available so pg gem can install
   export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-  # ^ ensure Postgres libs are available so pg gem can install
 }
 
 function install_linux_debian() {
@@ -197,7 +197,6 @@ function install_linux_debian() {
   log "Updating packages..."
   require_ack
 
-  # Updates package lists
   log "Installing dependencies..."
   require_ack
 
@@ -220,8 +219,8 @@ function install_linux() {
   if which psql > /dev/null; then
     log "Postgresql already installed"
   else
-    sudo apt-get install postgresql postgresql-contrib
     # creates admin role in psql for current user
+    # TODO: check if user exists first
     sudo -u postgres createuser "$USER" -s
   fi
   log "Postgresql install complete..."
