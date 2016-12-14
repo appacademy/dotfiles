@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+RUBY_VERSION='2.3.1'
+NODE_VERSION='6.2.1'
+
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
 RESET='\033[0m'
@@ -56,11 +60,12 @@ log "Installing Ruby..."
 read -p "Press enter to continue."
 cd $requirements_dir
 
-if rbenv global "$RUBY_VERSION"; then
+if rbenv global "$RUBY_VERSION" > /dev/null; then
   log "Ruby v$RUBY_VERSION already installed."
 else
   log "activating rbenv..."
   eval "$(rbenv init -)" || fail "could not activate rbenv"
+  source ~/.bashrc
   log "Installing Ruby v$RUBY_VERSION..."
   rbenv install "$RUBY_VERSION"
   log "Ruby v$RUBY_VERSION installed."
