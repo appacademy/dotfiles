@@ -20,10 +20,10 @@ fail() {
   exit 1
 }
 
-skip_ack=0
-while getopts :p OPT; do
+NO_ACK=0
+while getopts :n OPT; do
   case "$OPT" in
-    p) skip_ack=1
+    n) NO_ACK=1;;
     *) # getopts produces error
        fail;;
   esac
@@ -31,7 +31,7 @@ done
 shift $((OPTIND-1))
 
 require_ack() {
-  if ! ((skip_ack)); then
+  if ! ((NO_ACK)); then
     echo -ne "${PURPLE}${SCRIPT}:${RESET}"
     read -p " Press enter to continue."
   fi
@@ -69,7 +69,7 @@ function install() {
 
   if [[ "$OS" = 'mac' ]]; then
     install_mac
-  elif [[ "$OS" = 'debian ']]; then
+  elif [[ "$OS" = 'debian' ]]; then
     install_linux_debian
   else
     fail 'Unsupported OS'
