@@ -20,9 +20,21 @@ fail() {
   exit 1
 }
 
+skip_ack=0
+while getopts :p OPT; do
+  case "$OPT" in
+    p) skip_ack=1
+    *) # getopts produces error
+       fail;;
+  esac
+done
+shift $((OPTIND-1))
+
 require_ack() {
-  echo -ne "${PURPLE}${SCRIPT}:${RESET}"
-  read -p " Press enter to continue."
+  if ! ((skip_ack)); then
+    echo -ne "${PURPLE}${SCRIPT}:${RESET}"
+    read -p " Press enter to continue."
+  fi
 }
 
 case "$(uname -s)" in
@@ -47,13 +59,12 @@ esac
 function install() {
   cd $REQUIREMENTS_DIR
 
-  log "Removing rvm if you have it..."
-  require_ack
-
   if which rvm > /dev/null; then
-    log "rvm detected. Imploding..."
+    log "rvm detected. Removing it..."
+    require_ack
+
     rvm implode
-    log "rvm imploded."
+    log "rvm removed."
   fi
 
   if [[ "$OS" = 'mac' ]]; then
@@ -184,11 +195,11 @@ function install_linux_debian() {
   log "Linux Development Setup"
   log "Each group of packages will be install one at a time. Follow the prompts to continue."
   log "Updating packages..."
-  prompt "Press enter to continue"
+  require_ack
 
   # Updates package lists
-  log "Installing Dependencies next..."
-  prompt "Press enter to continue"
+  log "Installing dependencies..."
+  require_ack
 
   log "updating Debian package listing..."
   sudo apt-get update
@@ -196,7 +207,6 @@ function install_linux_debian() {
   sudo apt-get install $(cat debian-packages.txt)
 
   log "Dependencies installed..."
-  prompt "Press enter to continue"
 
   install_linux
 }
@@ -204,14 +214,8 @@ function install_linux_debian() {
 function install_linux() {
   cd $REQUIREMENTS_DIR
 
-  ## Dependencies
-  sudo apt-get update
-  sudo apt-get install $(cat debian-packages.txt)
-
-  log "Dependencies installed..."
-  prompt "Press enter to continue"
-
-  ## Postgresql
+  log "Installing Postgresql..."
+  require_ack
 
   if which psql > /dev/null; then
     log "Postgresql already installed"
@@ -220,10 +224,10 @@ function install_linux() {
     # creates admin role in psql for current user
     sudo -u postgres createuser "$USER" -s
   fi
-
   log "Postgresql install complete..."
-  log "Installing Rbenv next..."
-  prompt "Press enter to continue"
+
+  log "Installing Rbenv..."
+  require_ack
 
   if which rbenv > /dev/null; then
     log "rbenv already installed"
@@ -234,10 +238,10 @@ function install_linux() {
     source ~/.bashrc
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
   fi
-
   log "Rbenv installed"
-  log "Installing NVM, Node and NPM next..."
-  prompt "Press enter to continue"
+
+  log "Installing NVM..."
+  require_ack
 }
 
 install
