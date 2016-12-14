@@ -9,7 +9,7 @@ RESET='\033[0m'
 
 SCRIPT="$(basename "$0")"
 REPO_DIR="$( cd "$( dirname "$0" )/.." && pwd )"
-REQUIREMENTS_DIR="$( dirname "$REPO_DIR" )/requirements"
+REQUIREMENTS_DIR="${REPO_DIR}/requirements"
 
 log() {
   echo -e "${PURPLE}${SCRIPT}:${RESET} $1"
@@ -95,7 +95,7 @@ function install() {
   log "Installing bundler and gems..."
   require_ack
 
-  rm Gemfile.lock > /dev/null # ensure previous installs don't interfere
+  rm Gemfile.lock &> /dev/null # ensure previous installs don't interfere
   gem install bundler
   rbenv rehash
   bundle install
@@ -170,7 +170,6 @@ function install_mac() {
   if which brew > /dev/null; then
     log "Hombrew already installed. Updating..."
     brew update
-    brew upgrade rbenv ruby-build
     log "Hombrew updated."
   else
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
@@ -181,8 +180,10 @@ function install_mac() {
   log "Installing Brew formulae..."
   require_ack
 
-  brew install $(cat "brew-formulae.txt") \
-    || log 'Brew install failed. Look at the logs and try running `brew doctor`.'
+  # TODO: figure out a way to run brew without ignoring real errors
+  brew install $(cat "brew-formulae.txt")
+  log "Upgrading outdated brew formulae..."
+  brew upgrade $(cat "brew-formulae.txt")
   log "Brew formulae installed."
 
   # ensure Postgres libs are available so pg gem can install

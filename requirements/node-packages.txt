@@ -1,6 +1,7 @@
+xt
 eslint
 json
-phantomjs-prebuilt
-ws
 node-inspector
+phantomjs-prebuilt
 webpack
+ws
