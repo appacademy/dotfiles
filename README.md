@@ -60,6 +60,11 @@ Open it up and click through the dialog like you did with Postgres.
 
 ## Using the Dotfiles repo.
 
+The following scripts will work if your operating system is based on
+Darwin (the Mac OS) or Debian (Ubuntu is Debian). If you are running a
+different UNIX flavor, you may have to follow the [manual install
+instructions](./requirements) and set up your `.bashrc` yourself.
+
 ### Download Dotfiles.
 
 ```
@@ -114,8 +119,7 @@ have succeeded in the course using Linux.
 If you have a Linux machine, setup will be largely the same but slightly
 more involved. Take a look at [Linux Development
 Setup](./linux.md#setting-up-the-development-environment) for
-instructions and an installation script that will install and configure
-most of the tools you will be using at App Academy.
+instructions.
 
 ### Windows
 
