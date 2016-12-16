@@ -71,22 +71,6 @@ In linux, installing most development-related packages requires administrator pe
 
 Before we install any dev packages let's install [Google Chrome](google.com/chrome) and [Atom](atom.io). Download the .deb files available from the download pages and double click to install. This should open a install dialogue.
 
-Take a look at [install_requirements_linux](/install_requirements_linux) and get a feel for what it is installing on your machine. Also, verify that the package versions are those you want to use. The script installs the following packages:
-* Git - latest stable version
-* Node + webpack - 6.x
-* A bunch of Ruby + SQL + Rails dependencies
-* Postgresql - latest stable version
-* rbenv - latest stable version
-* Ruby + bundler - 2.3.1
-* Rails - latest stable version
-
-You will need to make the script executable before running it.
-
-```bash
-$ chmod +x install_requirements_linux # make executable
-$ ./install_requirements_linux # run the script
-```
-
-The script will install each group of packages at a time and prompt you to continue with install after each successful installation. You may encounter errors. If you do, search for the error and practice those debugging skills.
+Once you have all this set up, you should be ready to [download and run the dotfiles scripts](./README.md#using-the-dotfiles-repo).
 
 Good luck!

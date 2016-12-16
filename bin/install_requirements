@@ -32,8 +32,8 @@ shift $((OPTIND-1))
 
 require_ack() {
   if ! ((NO_ACK)); then
-    echo -ne "${PURPLE}${SCRIPT}:${RESET}"
-    read -p " Press enter to continue."
+    echo -e "${PURPLE}${SCRIPT}:${RESET} Press enter to continue."
+    read
   fi
 }
 

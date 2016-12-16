@@ -111,7 +111,11 @@ have succeeded in the course using Linux.
 
 ### Linux
 
-If you have a Linux machine, setup will be largely the same but slightly more involved. Take a look at [Linux Development Setup](./linux/README.md#setting-up-the-development-environment) for instructions and an installation script that will install and configure most of the tools you will be using at App Academy.
+If you have a Linux machine, setup will be largely the same but slightly
+more involved. Take a look at [Linux Development
+Setup](./linux.md#setting-up-the-development-environment) for
+instructions and an installation script that will install and configure
+most of the tools you will be using at App Academy.
 
 ### Windows
 
@@ -122,9 +126,14 @@ run into any problems, you're totally on your own. Our instructors are
 trained on Macs and the Windows architecture is just too different for
 us to be able to help you debug issues.
 
-Instead, we suggest installing Ubuntu Linux for use on your personal machine. Linux can be installed over Windows (overwriting your Windows install) or alongside in a dual-boot setup. You can find a full tutorial for both install and development setup [here](./linux/README.md).
+Instead, we suggest installing Ubuntu Linux for use on your personal
+machine. Linux can be installed over Windows (overwriting your Windows
+install) or alongside in a dual-boot setup. You can find a full tutorial
+for both install and development setup [here](./linux.md).
 
-**NB:** This setup can take some time and can potentially corrupt your Windows installation. Make sure to read all instructions before proceeding.
+**Warning:** This setup can take some time and can potentially corrupt
+your Windows installation. Make sure to read all instructions before
+proceeding.
 
 ### None
 
