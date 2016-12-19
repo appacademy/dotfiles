@@ -1,0 +1,14 @@
+autoconf
+bison
+build-essential
+git
+libffi-dev
+libgdbm-dev
+libgdbm3
+libncurses5-dev
+libreadline6-dev
+libssl-dev
+libyaml-dev
+postgresql
+postgresql-contrib
+zlib1g-dev

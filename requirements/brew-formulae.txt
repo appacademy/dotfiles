@@ -1,4 +1,5 @@
 git
 heroku
-qt
+qt5
 rbenv
+ruby-build
