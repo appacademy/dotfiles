@@ -214,17 +214,17 @@ function install_linux_debian() {
 function install_linux() {
   cd $REQUIREMENTS_DIR
 
-  log "Installing Postgresql..."
+  log "Configuring Postgresql..."
   require_ack
 
   if which psql > /dev/null; then
-    log "Postgresql already installed"
-  else
     # creates admin role in psql for current user
     # TODO: check if user exists first
     sudo -u postgres createuser "$USER" -s
+  else
+    fail "Postgresql not installed"
   fi
-  log "Postgresql install complete..."
+  log "Postgresql configuration complete..."
 
   log "Installing Rbenv..."
   require_ack
