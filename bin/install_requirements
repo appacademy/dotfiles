@@ -82,8 +82,8 @@ function install() {
     log "Ruby v$RUBY_VERSION already installed."
   else
     log "activating rbenv..."
+    which rbenv || export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)" || fail "could not activate rbenv"
-    source ~/.bashrc
     log "Installing Ruby v$RUBY_VERSION..."
     rbenv install "$RUBY_VERSION"
     log "Ruby v$RUBY_VERSION installed."
@@ -233,15 +233,9 @@ function install_linux() {
     log "rbenv already installed"
   else
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc || fail "unable to add PATH variable"
-    echo 'eval "$(rbenv init -)"' >> ~/.bashrc || fail "could not activate rbenv"
-    source ~/.bashrc
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
   fi
   log "Rbenv installed"
-
-  log "Installing NVM..."
-  require_ack
 }
 
 install
