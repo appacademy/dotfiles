@@ -3,4 +3,3 @@ linter-eslint
 linter-rubocop
 react
 rspec
-run-in-atom
