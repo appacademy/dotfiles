@@ -27,3 +27,6 @@
     liveUpdate: false
   welcome:
     showOnStartup: false
+".text":
+  editor:
+    softWrap: true
