@@ -73,4 +73,7 @@ Before we install any dev packages let's install [Google Chrome](google.com/chro
 
 Once you have all this set up, you should be ready to [download and run the dotfiles scripts](./README.md#using-the-dotfiles-repo).
 
+**NB**: If after running the dotfiles you are unable to run commands in the command line, remove the following line in `.bashrc`: `[[ -f "$HOME/.profile" ]] && source "$HOME/.profile"`
+
+
 Good luck!
