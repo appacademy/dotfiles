@@ -33,4 +33,4 @@ export NVM_DIR="$HOME/.nvm"
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # load any local configuration
-[[ -f "$HOME/.profile" ]] && source "$HOME/.profile"
+[[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
