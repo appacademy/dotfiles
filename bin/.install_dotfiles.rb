@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 require 'erb'
 
 REPO = File.expand_path("../..", __FILE__)
