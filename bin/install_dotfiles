@@ -1,4 +1,4 @@
 #!/bin/bash
 dir="$( dirname "$0" )"
-ruby=$(which ruby || rbenv which ruby)"
+ruby="$(which ruby || rbenv which ruby)"
 "$ruby" "$dir/.install_dotfiles.rb"
