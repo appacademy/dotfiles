@@ -18,10 +18,10 @@
     statusIconScope: "File"
   "linter-eslint":
     disableWhenNoEslintConfig: false
-    globalNodePath: "<%= HOME %>/.nvm/versions/node/v6.2.1"
+    globalNodePath: "<%= `npm get prefix`.chomp %>"
     useGlobalEslint: true
   "linter-rubocop":
-    executablePath: "<%= HOME %>/.rbenv/shims/rubocop"
+    executablePath: "<%= `which rubocop`.chomp %>"
   "markdown-preview":
     liveUpdate: false
   welcome:
