@@ -19,6 +19,7 @@
     showErrorTabProject: false
     statusIconScope: "File"
   "linter-eslint":
+    disableWhenNoEslintConfig: false
     globalNodePath: "<%= HOME %>/.nvm/versions/node/v6.2.1"
     useGlobalEslint: true
   "linter-rubocop":
