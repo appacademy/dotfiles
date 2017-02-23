@@ -110,12 +110,12 @@ cd $requirements_dir
 ### Installing Node
 Node.js is an open-source, cross-platform runtime environment for developing server-side Web applications. To get Node installed run
 ```
-nvm ls 6.2.1
+nvm ls 6.10.0
 ```
-if 6.2.1 is displayed then you have Node installed.  If Node is not installed, run
+if 6.10.0 is displayed then you have Node installed.  If Node is not installed, run
 ```
-nvm install 6.2.1
-nvm alias default 6.2.1
+nvm install 6.10.0
+nvm alias default 6.10.0
 ```
 
 ### Installing Node packages
