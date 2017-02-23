@@ -8,8 +8,6 @@
     preferredLineLength: 72
     showIndentGuide: true
     showInvisibles: true
-  "exception-reporting":
-    userId: "app-academy"
   linter:
     errorPanelHeight: 180
     ignoreVCSIgnoredFiles: false
