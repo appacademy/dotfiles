@@ -89,7 +89,7 @@ rbenv rehash
 ### Install NVM
 NVM is the version manager for Javascript.  To get NVM installed run
 ```
-NVM_DIR = $HOME/.nvm
+NVM_DIR=$HOME/.nvm
 ```
 cd $NVM_DIR. If there is already a directory, then you already have nvm installed. If the nvm directory is not there run
 ```
