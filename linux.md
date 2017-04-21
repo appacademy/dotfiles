@@ -69,7 +69,7 @@ $ sudo apt-get update # updates package lists
 
 In linux, installing most development-related packages requires administrator permissions, so `sudo` will prefix most of our commands.
 
-Before we install any dev packages let's install [Google Chrome](google.com/chrome) and [Atom](atom.io). Download the .deb files available from the download pages and double click to install. This should open a install dialogue.
+Before we install any dev packages let's install [Google Chrome](https://www.google.com/chrome/) and [Atom](https://atom.io/). Download the .deb files available from the download pages and double click to install. This should open a install dialogue.
 
 Once you have all this set up, you should be ready to [download and run the dotfiles scripts](./README.md#using-the-dotfiles-repo).
 
