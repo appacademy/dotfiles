@@ -31,15 +31,6 @@ given code and paste it in to run these steps.
   xcode-select --install
   ```
 
-### Change ownership of `/usr/local`.
-
-This will allow you to manage Homebrew and its packages without the use
-of `sudo`. Some packages do not behave well if you do not do this.
-
-```
-sudo chown -R "$USER" /usr/local
-```
-
 ### Install Postgres App.
 
 This is the PostgreSQL server we'll be using. Download it
