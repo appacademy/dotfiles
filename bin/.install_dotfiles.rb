@@ -137,7 +137,8 @@ end
 def user_consents?(changed_dotfiles)
   puts diff_warning(changed_dotfiles)
   puts "\n\nContinue? (y/n)"
-  gets.downcase.include?('y')
+  input = gets
+  input.nil? || input.downcase.include?('y')
 end
 
 def diff_warning(changed_dotfiles)
