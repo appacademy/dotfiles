@@ -75,6 +75,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+.byebug_history
 
 
 ## Webpack:
