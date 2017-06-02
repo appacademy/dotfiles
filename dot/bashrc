@@ -7,9 +7,6 @@ source "$HOME/.git-prompt.sh"
 
 # look for commands in these places
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.bin:$PATH"
 
 # make vim the default text editor
 export EDITOR="vim"
