@@ -8,9 +8,6 @@ source "$HOME/.git-prompt.sh"
 # look for commands in these places
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
-# make vim the default text editor
-export EDITOR="vim"
-
 # shortened prompt that includes git branch info
 RED='\[\e[0;31m\]'
 WHITE='\[\e[1;37m\]'
