@@ -13,6 +13,7 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
+	editor = atom --wait
 [push]
 	default = simple
 [user]
