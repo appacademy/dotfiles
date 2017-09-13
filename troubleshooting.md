@@ -28,7 +28,7 @@ they shouldn't belong to `root` anyway. (They're in _your_ home
 directory after all!)
 
 The following command will recursively repossess everything in the
-`.rvenv` directory, where all your Ruby files and gems live. Go ahead
+`.rbenv` directory, where all your Ruby files and gems live. Go ahead
 and run it:
 
 ```
