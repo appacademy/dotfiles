@@ -3,7 +3,7 @@ AllCops:
     # - db/schema.rb
     - '**/db/schema.rb' # changed made for a/A
 
-Naming/AccessorMethodName:
+Style/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   Enabled: false
 
@@ -22,7 +22,7 @@ Style/AsciiComments:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-comments'
   Enabled: false
 
-Naming/AsciiIdentifiers:
+Style/AsciiIdentifiers:
   Description: 'Use only ascii symbols in identifiers.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-identifiers'
   Enabled: false
@@ -112,7 +112,7 @@ Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
   Enabled: false
 
-Layout/DotPosition:
+Style/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
   EnforcedStyle: trailing
@@ -142,11 +142,11 @@ Style/EvenOdd:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#predicate-methods'
   Enabled: false
 
-Layout/ExtraSpacing:
+Style/ExtraSpacing:
   Description: 'Do not use unnecessary spacing.'
   Enabled: true
 
-Naming/FileName:
+Style/FileName:
   Description: 'Use snake_case for source file names.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
   Enabled: false
@@ -225,7 +225,7 @@ Style/ModuleFunction:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#module-function'
   Enabled: false
 
-Layout/MultilineOperationIndentation:
+Style/MultilineOperationIndentation:
   Description: >-
                  Checks indentation of binary operations that span more than
                  one line.
@@ -237,7 +237,7 @@ Style/MultilineBlockChain:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
   Enabled: false
 
-Layout/MultilineMethodCallIndentation:
+Style/MultilineMethodCallIndentation:
   Description: >-
                  Checks indentation of method calls with the dot operator
                  that span more than one line.
@@ -285,7 +285,7 @@ Style/OneLineConditional:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#ternary-operator'
   Enabled: false
 
-Naming/BinaryOperatorParameterName:
+Style/OpMethod:
   Description: 'When defining binary operators, name the argument other.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#other-arg'
   Enabled: false
@@ -305,7 +305,7 @@ Style/PerlBackrefs:
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-perl-regexp-last-matchers'
   Enabled: false
 
-Naming/PredicateName:
+Style/PredicateName:
   Description: 'Check the names of predicate methods.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#bool-methods-qmark'
   NamePrefixBlacklist:
@@ -472,7 +472,7 @@ Lint/InvalidCharacterLiteral:
                  whitespace character.
   Enabled: false
 
-Layout/InitialIndentation:
+Style/InitialIndentation:
   Description: >-
     Checks the indentation of the first non-blank non-comment line in a file.
   Enabled: false
@@ -663,10 +663,10 @@ Style/TrailingCommaInLiteral:
 Style/TrailingCommaInArguments:
   Enabled: false
 
-Layout/TrailingWhitespace:
+Style/TrailingWhitespace:
   Enabled: false
 
-Layout/IndentArray:
+Style/IndentArray:
   Enabled: false
 
 Style/RedundantSelf:
@@ -676,40 +676,40 @@ Style/RedundantSelf:
 # TODO: Figure out how to configure the number of empty lines detected.
 # Until then, leave these cops disabled.
 ####################
-Layout/EmptyLines:
+Style/EmptyLines:
   Enabled: false
 
-Layout/EmptyLinesAroundMethodBody:
+Style/EmptyLinesAroundMethodBody:
   Enabled: false
 
-Layout/EmptyLinesAroundModuleBody:
+Style/EmptyLinesAroundModuleBody:
   Enabled: false
 
-Layout/EmptyLinesAroundBlockBody:
+Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
-Layout/EmptyLinesAroundClassBody:
+Style/EmptyLinesAroundClassBody:
   Enabled: false
 ####################
 
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Layout/DotPosition:
+Style/DotPosition:
   Enabled: false
 
-Layout/TrailingBlankLines:
+Style/TrailingBlankLines:
   Enabled: false
 
 # TODO: Discuss/study Style/MultilineMethodCallBraceLayout the  more closely.
 # Keep it disabled for now.
-Layout/MultilineMethodCallBraceLayout:
+Style/MultilineMethodCallBraceLayout:
   Enabled: false
 
-Layout/FirstParameterIndentation:
+Style/FirstParameterIndentation:
   Enabled: false
 
-Layout/LeadingCommentSpace:
+Style/LeadingCommentSpace:
   Enabled: false
 
 Style/ParallelAssignment:
@@ -721,15 +721,13 @@ Style/CollectionMethods:
 Style/NumericPredicate:
   Enabled: false
 
-Layout/SpaceInsideBrackets:
+Style/SpaceInsideBrackets:
   Enabled: false
 
-Layout/SpaceInsideHashLiteralBraces:
-  Description: "Use spaces inside hash literal braces - or don't."
-  StyleGuide: 'https://github.com/bbatsov/rails-style-guide#spaces-operators'
-  Enabled: true
+Style/SpacesInsideHashLiteralBraces:
+  Enabled: false
 
-Naming/PredicateName:
+Style/PredicateName:
   Enabled: false
 
 # NB: These cops below this line do not appear often in curriculum code base
@@ -737,7 +735,7 @@ Naming/PredicateName:
 Style/BlockComments:
   Enabled: false
 
-Naming/VariableNumber:
+Style/VariableNumber:
   Enabled: false
 
 Performance/RedundantBlockCall:
@@ -746,7 +744,7 @@ Performance/RedundantBlockCall:
 Style/ConditionalAssignment:
   Enabled: false
 
-Layout/MultilineOperationIndentation:
+Style/MultilineOperationIndentation:
   Enabled: false
 
 Style/RescueModifier:
