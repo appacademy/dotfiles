@@ -168,13 +168,13 @@ function install_mac() {
   require_ack
 
   if which brew > /dev/null; then
-    log "Hombrew already installed. Updating..."
+    log "Homebrew already installed. Updating..."
     brew update
-    log "Hombrew updated."
+    log "Homebrew updated."
   else
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
       || fail "could not install Homebrew"
-    log "Hombrew installed."
+    log "Homebrew installed."
   fi
 
   log "Installing Brew formulae..."
