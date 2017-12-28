@@ -76,7 +76,7 @@ rvm implode
 Run
 
 ```
-rbenv init -
+eval "$(rbenv init -)"
 rbenv global
 ```
 
