@@ -22,6 +22,10 @@ export PS1="$RED\w$WHITE\$(__git_ps1)$RED\$$RESET "
 # initialize rbenv
 eval "$(rbenv init -)"
 
+# timestamps for bash history
+
+export HISTTIMEFORMAT="%d%b%y%T "
+
 # initialize node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
