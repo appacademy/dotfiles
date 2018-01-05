@@ -80,12 +80,12 @@ eval "$(rbenv init -)"
 rbenv global
 ```
 
-If the version is 2.3.1 then you have the correct version.  If the version is incorrect, run
+If the version is 2.5.0 then you have the correct version.  If the version is incorrect, run
 
 ```
 brew upgrade rbenv ruby-build
-rbenv install 2.3.1
-rbenv global 2.3.1
+rbenv install 2.5.0
+rbenv global 2.5.0
 rbenv rehash
 ```
 
@@ -133,14 +133,14 @@ cd $requirements_dir
 Node.js is an open-source, cross-platform runtime environment for developing server-side Web applications. To get Node installed run
 
 ```
-nvm ls 6.10.0
+nvm ls 8.9.4
 ```
 
 If 6.10.0 is displayed then you have Node installed.  If Node is not installed, run
 
 ```
-nvm install 6.10.0
-nvm alias default 6.10.0
+nvm install 8.9.4
+nvm alias default 8.9.4
 ```
 
 ### Installing Node Packages
