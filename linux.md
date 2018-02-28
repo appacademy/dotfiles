@@ -35,7 +35,7 @@ Also, check out [this](http://www.tecmint.com/install-ubuntu-16-04-alongside-wit
 
 1. Open the 'Disk Management' disk utility. This is easily done by right-clicking the 'Start' menu and selecting 'Disk Management'. If on an older system consult [this](https://support.wdc.com/knowledgebase/answer.aspx?ID=1284#win) guide.
 2. Find and right-click on your `C:` drive. Select 'Shrink Partition'.
-3. Shrink your drive by at least 25000MB (roughly 25GB). This will ensure that Ubuntu not only has enough room to install, but also creates a large enough swapfile (used when dealing with a lot of memory) and has enough room to to store other applications and files. When finished click 'Shrink'.
+3. Shrink your drive so there will be at a minimum 25000MB (roughly 25GB) available for the other partition (a bit more is better if you can spare it). This will ensure that Ubuntu not only has enough room to install, but also creates a large enough swapfile (used when dealing with a lot of memory) and has enough room to to store other applications and files. When finished click 'Shrink'.
 4. There should now be a black, 'Unallocated' partition next to your `C:` drive. This is where Ubuntu will be installed.
 
 ## Install
